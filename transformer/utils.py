@@ -6,7 +6,7 @@ def pad_list(xs, pad_value):
     # From: espnet/src/nets/e2e_asr_th.py: pad_list()
     n_batch = len(xs)
     max_len = max(x.size(0) for x in xs)
-    pad = xs[0].new(n_batch, max_len, * xs[0].size()[1:]).fill_(pad_value)
+    pad = xs[0].new(n_batch, max_len, *xs[0].size()[1:]).fill_(pad_value)
     for i in range(n_batch):
         pad[i, :xs[i].size(0)] = xs[i]
     return pad
@@ -24,9 +24,11 @@ def process_dict(dict_path):
 
 if __name__ == "__main__":
     import sys
+
     path = sys.argv[1]
     char_list, sos_id, eos_id = process_dict(path)
     print(char_list, sos_id, eos_id)
+
 
 # * ------------------ recognition related ------------------ *
 
@@ -95,6 +97,7 @@ def add_results_to_json(js, nbest_hyps, char_list):
 # -- Transformer Related --
 import torch
 
+
 def get_non_pad_mask(padded_input, input_lengths=None, pad_idx=None):
     """padding position is set to 0, either use input_lengths or pad_idx
     """
@@ -112,6 +115,7 @@ def get_non_pad_mask(padded_input, input_lengths=None, pad_idx=None):
     # unsqueeze(-1) for broadcast
     return non_pad_mask.unsqueeze(-1)
 
+
 def get_subsequent_mask(seq):
     ''' For masking out the subsequent info. '''
 
@@ -122,6 +126,7 @@ def get_subsequent_mask(seq):
 
     return subsequent_mask
 
+
 def get_attn_key_pad_mask(seq_k, seq_q, pad_idx):
     ''' For masking out the padding part of key sequence. '''
 
@@ -131,6 +136,7 @@ def get_attn_key_pad_mask(seq_k, seq_q, pad_idx):
     padding_mask = padding_mask.unsqueeze(1).expand(-1, len_q, -1)  # b x lq x lk
 
     return padding_mask
+
 
 def get_attn_pad_mask(padded_input, input_lengths, expand_length):
     """mask position is set to 1"""

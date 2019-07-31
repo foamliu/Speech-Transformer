@@ -7,8 +7,8 @@ from config import wav_folder, tran_file, pickle_file
 from utils import ensure_folder
 
 
-def get_data(mode):
-    print('getting {} data...'.format(mode))
+def get_data(split):
+    print('getting {} data...'.format(split))
 
     global VOCAB
 
@@ -24,7 +24,7 @@ def get_data(mode):
 
     samples = []
 
-    folder = os.path.join(wav_folder, mode)
+    folder = os.path.join(wav_folder, split)
     ensure_folder(folder)
     dirs = [os.path.join(folder, d) for d in os.listdir(folder) if os.path.isdir(os.path.join(folder, d))]
     for dir in tqdm(dirs):
@@ -45,6 +45,7 @@ def get_data(mode):
 
                 samples.append({'trn': trn, 'wave': wave})
 
+    print('split: {}, num_files: {}'.format(split, len(samples)))
     return samples
 
 

@@ -3,7 +3,7 @@ import pickle
 import numpy as np
 import torch
 from torch.utils.data import Dataset
-from torch.utils.data.dataloader import default_collate
+from torch.utils.data._utils.collate import default_collate
 
 from config import num_workers, pickle_file
 from utils import extract_feature
@@ -20,7 +20,6 @@ def pad_collate(batch):
 
     for i, elem in enumerate(batch):
         f, trn = elem
-        print(f.shape)
         input_length = f.shape[0]
         input_dim = f.shape[1]
         # print('f.shape: ' + str(f.shape))

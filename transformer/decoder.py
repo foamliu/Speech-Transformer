@@ -1,10 +1,10 @@
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
-from attention import MultiHeadAttention
-from module import PositionalEncoding, PositionwiseFeedForward
+from .attention import MultiHeadAttention
+from .module import PositionalEncoding, PositionwiseFeedForward
 
-from utils import (IGNORE_ID, get_attn_key_pad_mask, get_attn_pad_mask,
+from .utils import (IGNORE_ID, get_attn_key_pad_mask, get_attn_pad_mask,
                    get_non_pad_mask, get_subsequent_mask, pad_list)
 
 

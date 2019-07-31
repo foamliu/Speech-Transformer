@@ -1,7 +1,6 @@
 import numpy as np
 import torch
 from tensorboardX import SummaryWriter
-from torch import nn
 
 from config import device, grad_clip, print_freq, vocab_size, num_workers, sos_id, eos_id
 from data_gen import AiShellDataset, pad_collate
@@ -99,9 +98,7 @@ def train(train_loader, model, optimizer, epoch, logger):
         padded_input = padded_input.to(device)
         padded_target = padded_target.to(device)
         input_lengths = input_lengths.to(device)
-        print('padded_input.size(): ' + str(padded_input.size()))
-        print('padded_target.size(): ' + str(padded_target.size()))
-        print('input_lengths.size(): ' + str(input_lengths.size()))
+        print('padded_target: ' + str(padded_target))
 
         # Forward prop.
         loss = model(padded_input, input_lengths, padded_target)

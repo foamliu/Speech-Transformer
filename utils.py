@@ -132,7 +132,7 @@ def parse_args():
     parser.add_argument('--warmup_steps', default=4000, type=int,
                         help='warmup steps')
 
-    parser.add_argument('--end-epoch', type=int, default=10000, help='training epoch size.')
+    parser.add_argument('--end-epoch', type=int, default=25, help='training epoch size.')
     parser.add_argument('--checkpoint', type=str, default=None, help='checkpoint')
     args = parser.parse_args()
     return args

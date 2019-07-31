@@ -26,7 +26,7 @@ def pad_collate(batch):
         feature = np.zeros((max_input_len, input_dim), dtype=np.float)
         feature[:f.shape[0], :f.shape[1]] = f
         trn = np.pad(trn, (0, max_target_len - len(trn)), 'constant', constant_values=0)
-        batch[i] = (feature, trn, input_length)
+        batch[i] = (feature, input_length, trn)
         # print('feature.shape: ' + str(feature.shape))
         # print('trn.shape: ' + str(trn.shape))
 

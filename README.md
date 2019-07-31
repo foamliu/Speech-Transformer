@@ -23,3 +23,31 @@ In data folder, download speech data and transcripts:
 ```bash
 $ wget http://www.openslr.org/resources/33/data_aishell.tgz
 ```
+
+## Dependency
+
+- Python 3.5.2
+- PyTorch 1.0.0
+
+## Usage
+### Data Pre-processing
+Extract training & test images:
+```bash
+$ python extract.py
+```
+
+### Train
+```bash
+$ python train.py
+```
+
+If you want to visualize during training, run in your terminal:
+```bash
+$ tensorboard --logdir runs
+```
+
+### Demo
+Pick 10 random test examples from test set:
+```bash
+$ python demo.py
+```

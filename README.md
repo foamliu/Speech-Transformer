@@ -31,10 +31,35 @@ $ wget http://www.openslr.org/resources/33/data_aishell.tgz
 
 ## Usage
 ### Data Pre-processing
-Extract training & test images:
+Extract data_aishell.tgz:
 ```bash
 $ python extract.py
 ```
+
+Extract wav files into train/dev/test folders:
+```bash
+$ cd data/data_aishell/wav
+$ find . -name '*.tar.gz' -execdir tar -xzvf '{}' \;
+```
+
+Scan transcript data, generate features:
+```bash
+$ python pre_process.py
+```
+
+Now the folder structure under data folder is sth. like:
+<pre>
+data/
+    data_aishell.tgz
+    data_aishell/
+        transcript/
+            aishell_transcript_v0.8.txt
+        wav/
+            train/
+            dev/
+            test/
+    aishell.pickle
+</pre>
 
 ### Train
 ```bash

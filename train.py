@@ -96,15 +96,6 @@ def train(train_loader, model, optimizer, epoch, logger):
     for i, (data) in enumerate(train_loader):
         # Move to GPU, if available
         padded_input, padded_target, input_lengths = data
-        print('padded_input.size(): ' + str(padded_input.size()))
-        print('input_lengths.size(): ' + str(input_lengths.size()))
-        print('padded_target.size(): ' + str(padded_target.size()))
-        print('type(padded_input): ' + str(type(padded_input)))
-        print('type(input_lengths): ' + str(type(input_lengths)))
-        print('type(padded_target): ' + str(type(padded_target)))
-        print('padded_input: ' + str(padded_input))
-        print('input_lengths: ' + str(input_lengths))
-        print('padded_target: ' + str(padded_target))
         padded_input = padded_input.to(device)
         padded_target = padded_target.to(device)
         input_lengths = input_lengths.to(device)

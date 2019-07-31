@@ -95,7 +95,7 @@ def train(train_loader, model, optimizer, epoch, logger):
     # Batches
     for i, (data) in enumerate(train_loader):
         # Move to GPU, if available
-        padded_input, input_lengths, padded_target = data
+        padded_input, padded_target, input_lengths = data
         print('padded_input.size(): ' + str(padded_input.size()))
         print('input_lengths.size(): ' + str(input_lengths.size()))
         print('padded_target.size(): ' + str(padded_target.size()))

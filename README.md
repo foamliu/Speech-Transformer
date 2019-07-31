@@ -1,5 +1,9 @@
 # Speech Transformer
 
+## Introduction
+
+This is a PyTorch re-implementation of Speech-Transformer: A No-Recurrence Sequence-to-Sequence Model for Speech Recognition. 
+
 ## Dataset
 
 Aishell is an open-source Chinese Mandarin speech corpus published by Beijing Shell Shell Technology Co.,Ltd.

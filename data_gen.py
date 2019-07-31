@@ -20,6 +20,7 @@ def pad_collate(batch):
 
     for i, elem in enumerate(batch):
         f, trn = elem
+        print(f.shape)
         input_length = f.shape[0]
         input_dim = f.shape[1]
         # print('f.shape: ' + str(f.shape))

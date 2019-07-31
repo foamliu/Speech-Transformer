@@ -20,12 +20,11 @@ def clip_gradient(optimizer, grad_clip):
                 param.grad.data.clamp_(-grad_clip, grad_clip)
 
 
-def save_checkpoint(epoch, epochs_since_improvement, encoder, decoder, optimizer, loss, is_best):
+def save_checkpoint(epoch, epochs_since_improvement, model, optimizer, loss, is_best):
     state = {'epoch': epoch,
              'epochs_since_improvement': epochs_since_improvement,
              'loss': loss,
-             'encoder': encoder,
-             'decoder': decoder,
+             'model': model,
              'optimizer': optimizer}
 
     filename = 'checkpoint.tar'
@@ -132,6 +131,9 @@ def parse_args():
                         help='tunable scalar multiply to learning rate')
     parser.add_argument('--warmup_steps', default=4000, type=int,
                         help='warmup steps')
+
+    parser.add_argument('--end-epoch', type=int, default=10000, help='training epoch size.')
+    parser.add_argument('--checkpoint', type=str, default=None, help='checkpoint')
     args = parser.parse_args()
     return args
 

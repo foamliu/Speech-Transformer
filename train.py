@@ -41,8 +41,7 @@ def train_net(args):
         checkpoint = torch.load(checkpoint)
         start_epoch = checkpoint['epoch'] + 1
         epochs_since_improvement = checkpoint['epochs_since_improvement']
-        encoder = checkpoint['encoder']
-        decoder = checkpoint['decoder']
+        model = checkpoint['model']
         optimizer = checkpoint['optimizer']
 
     logger = get_logger()
@@ -85,7 +84,7 @@ def train_net(args):
             epochs_since_improvement = 0
 
         # Save checkpoint
-        save_checkpoint(epoch, epochs_since_improvement, encoder, decoder, optimizer, best_loss, is_best)
+        save_checkpoint(epoch, epochs_since_improvement, model, optimizer, best_loss, is_best)
 
 
 def train(train_loader, model, optimizer, epoch, logger):

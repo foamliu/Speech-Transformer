@@ -22,7 +22,7 @@ print_freq = 10  # print training/validation stats  every __ batches
 checkpoint = None  # path to checkpoint, None if none
 
 # Data parameters
-PAD_token = 0
+pad_id = 0
 sos_id = 1
 eos_id = 2
 num_train = 120098
@@ -34,5 +34,4 @@ DATA_DIR = 'data'
 aishell_folder = 'data/data_aishell'
 wav_folder = os.path.join(aishell_folder, 'wav')
 tran_file = os.path.join(aishell_folder, 'transcript/aishell_transcript_v0.8.txt')
-IMG_DIR = 'data/images'
 pickle_file = 'data/aishell.pickle'

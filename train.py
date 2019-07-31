@@ -33,7 +33,7 @@ def train_net(args):
                           tgt_emb_prj_weight_sharing=args.tgt_emb_prj_weight_sharing,
                           pe_maxlen=args.pe_maxlen)
         model = Transformer(encoder, decoder)
-        model = nn.DataParallel(model)
+        # model = nn.DataParallel(model)
 
         optimizer = torch.optim.Adam(model.parameters(), betas=(0.9, 0.98), eps=1e-09)
 
@@ -93,14 +93,18 @@ def train(train_loader, model, optimizer, epoch, logger):
     losses = AverageMeter()
 
     # Batches
-    for i, (features, trns, input_lengths) in enumerate(train_loader):
+    for i, (data) in enumerate(train_loader):
         # Move to GPU, if available
-        features = features.float().to(device)
-        trns = trns.long().to(device)
-        input_lengths = input_lengths.long().to(device)
+        padded_input, input_lengths, padded_target = data
+        print('padded_input.size(): ' + str(padded_input.size()))
+        print('input_lengths.size(): ' + str(input_lengths.size()))
+        print('padded_target.size(): ' + str(padded_target.size()))
+        padded_input = padded_input.to(device)
+        padded_target = padded_target.to(device)
+        input_lengths = input_lengths.to(device)
 
         # Forward prop.
-        loss = model(features, input_lengths, trns)
+        loss = model(padded_input, input_lengths, padded_target)
 
         # Back prop.
         optimizer.zero_grad()

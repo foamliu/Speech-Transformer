@@ -62,4 +62,11 @@ if __name__ == "__main__":
     print(len(train_dataset))
     print(len(train_loader))
 
-    print(train_dataset[0])
+    trn = train_dataset[0][1]
+    print(trn)
+
+    with open(pickle_file, 'rb') as file:
+        data = pickle.load(file)
+    IVOCAB = data['IVOCAB']
+
+    print([IVOCAB(idx) for idx in trn])

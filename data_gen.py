@@ -72,4 +72,4 @@ if __name__ == "__main__":
         data = pickle.load(file)
     IVOCAB = data['IVOCAB']
 
-    print([IVOCAB(idx) for idx in trn])
+    print([IVOCAB[idx] for idx in trn])

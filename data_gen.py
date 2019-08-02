@@ -57,15 +57,15 @@ class AiShellDataset(Dataset):
 if __name__ == "__main__":
     train_dataset = AiShellDataset('train')
     train_loader = torch.utils.data.DataLoader(train_dataset, batch_size=256, shuffle=True, num_workers=num_workers,
-                                               pin_memory=True)
+                                               pin_memory=True, collate_fn=pad_collate)
 
     print(len(train_dataset))
     print(len(train_loader))
 
-    feature = train_dataset[0][0]
+    feature = train_dataset[10][0]
     print(feature.shape)
 
-    trn = train_dataset[0][1]
+    trn = train_dataset[10][1]
     print(trn)
 
     with open(pickle_file, 'rb') as file:
@@ -73,3 +73,5 @@ if __name__ == "__main__":
     IVOCAB = data['IVOCAB']
 
     print([IVOCAB[idx] for idx in trn])
+
+    print(train_loader[0])

@@ -5,7 +5,7 @@ import torch
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')  # sets device for model and PyTorch tensors
 
 # Model parameters
-input_dim = 80  # dimension of feature
+input_dim = 40  # dimension of feature
 window_size = 25  # window size for FFT (ms)
 hidden_size = 512
 embedding_dim = 512

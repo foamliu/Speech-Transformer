@@ -62,6 +62,9 @@ if __name__ == "__main__":
     print(len(train_dataset))
     print(len(train_loader))
 
+    feature = train_dataset[0][0]
+    print(feature.shape)
+
     trn = train_dataset[0][1]
     print(trn)
 

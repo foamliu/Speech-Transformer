@@ -56,7 +56,7 @@ def train_net(args):
                                                shuffle=True, num_workers=num_workers)
     valid_dataset = AiShellDataset('dev')
     valid_loader = torch.utils.data.DataLoader(valid_dataset, batch_size=args.batch_size, collate_fn=pad_collate,
-                                               shuffle=False, num_workers=num_workers, drop_last=True)
+                                               shuffle=False, num_workers=num_workers)
 
     # Epochs
     for epoch in range(start_epoch, args.epochs):
@@ -67,13 +67,12 @@ def train_net(args):
                            epoch=epoch,
                            logger=logger)
         writer.add_scalar('Train_Loss', train_loss, epoch)
-        logger.info('[Training] Accuracy : {:.4f}'.format(train_loss))
 
         # One epoch's validation
         valid_loss = valid(valid_loader=valid_loader,
-                           model=model)
+                           model=model,
+                           logger=logger)
         writer.add_scalar('Valid_Loss', valid_loss, epoch)
-        logger.info('[Validate] Accuracy : {:.4f}'.format(valid_loss))
 
         # Check if there was an improvement
         is_best = valid_loss < best_loss
@@ -126,23 +125,28 @@ def train(train_loader, model, optimizer, epoch, logger):
     return losses.avg
 
 
-def valid(valid_loader, model):
+def valid(valid_loader, model, logger):
     model.eval()
 
     losses = AverageMeter()
 
     # Batches
-    for i, (features, trns, input_lengths) in enumerate(valid_loader):
+    for i, (data) in enumerate(valid_loader):
         # Move to GPU, if available
-        features = features.float().to(device)
-        trns = trns.long().to(device)
-        input_lengths = input_lengths.long().to(device)
+        padded_input, padded_target, input_lengths = data
+        padded_input = padded_input.to(device)
+        padded_target = padded_target.to(device)
+        input_lengths = input_lengths.to(device)
 
         # Forward prop.
-        loss = model(features, input_lengths, trns)
+        pred, gold = model(padded_input, input_lengths, padded_target)
+        loss, n_correct = cal_performance(pred, gold, smoothing=args.label_smoothing)
 
         # Keep track of metrics
         losses.update(loss.item())
+
+    # Print status
+    logger.info('\nValidation Loss {loss.val:.4f} ({loss.avg:.4f})\n'.format(loss=losses))
 
     return losses.avg
 

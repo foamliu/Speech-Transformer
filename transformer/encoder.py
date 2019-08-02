@@ -43,6 +43,9 @@ class Encoder(nn.Module):
         """
         enc_slf_attn_list = []
 
+        print('padded_input.size(): ' + str(padded_input.size()))
+        print('input_lengths.size(): ' + str(input_lengths.size()))
+
         # Prepare masks
         non_pad_mask = get_non_pad_mask(padded_input, input_lengths=input_lengths)
         length = padded_input.size(1)

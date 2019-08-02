@@ -98,8 +98,8 @@ def train(train_loader, model, optimizer, epoch, logger):
         padded_input = padded_input.to(device)
         padded_target = padded_target.to(device)
         input_lengths = input_lengths.to(device)
-        print('padded_input.size(): ' + str(padded_input.size()))
-        print('input_lengths.size(): ' + str(input_lengths.size()))
+
+        print('padded_target.size(): ' + str(padded_target.size()))
 
         # Forward prop.
         loss = model(padded_input, input_lengths, padded_target)

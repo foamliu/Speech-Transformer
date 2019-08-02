@@ -19,14 +19,14 @@ def pad_collate(batch):
         max_target_len = max_target_len if max_target_len > len(trn) else len(trn)
 
     for i, elem in enumerate(batch):
-        f, trn = elem
-        input_length = f.shape[0]
-        input_dim = f.shape[1]
+        feature, trn = elem
+        input_length = feature.shape[0]
+        input_dim = feature.shape[1]
         # print('f.shape: ' + str(f.shape))
-        feature = np.zeros((max_input_len, input_dim), dtype=np.float32)
-        feature[:f.shape[0], :f.shape[1]] = f
-        trn = np.pad(trn, (0, max_target_len - len(trn)), 'constant', constant_values=0)
-        batch[i] = (feature, trn, input_length)
+        padded_input = np.zeros((max_input_len, input_dim), dtype=np.float32)
+        padded_input[:input_length, :input_dim] = feature
+        padded_target = np.pad(trn, (0, max_target_len - len(trn)), 'constant', constant_values=0)
+        batch[i] = (padded_input, padded_target, input_length)
         # print('feature.shape: ' + str(feature.shape))
         # print('trn.shape: ' + str(trn.shape))
 
@@ -56,7 +56,7 @@ class AiShellDataset(Dataset):
 
 if __name__ == "__main__":
     train_dataset = AiShellDataset('train')
-    train_loader = torch.utils.data.DataLoader(train_dataset, batch_size=256, shuffle=True, num_workers=num_workers,
+    train_loader = torch.utils.data.DataLoader(train_dataset, batch_size=4, shuffle=True, num_workers=num_workers,
                                                pin_memory=True, collate_fn=pad_collate)
 
     print(len(train_dataset))

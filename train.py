@@ -6,6 +6,7 @@ from config import device, grad_clip, print_freq, vocab_size, num_workers, sos_i
 from data_gen import AiShellDataset, pad_collate
 from transformer.decoder import Decoder
 from transformer.encoder import Encoder
+from transformer.loss import cal_performance
 from transformer.transformer import Transformer
 from utils import parse_args, save_checkpoint, AverageMeter, clip_gradient, get_logger
 
@@ -100,7 +101,8 @@ def train(train_loader, model, optimizer, epoch, logger):
         input_lengths = input_lengths.to(device)
 
         # Forward prop.
-        loss = model(padded_input, input_lengths, padded_target)
+        pred, gold = model(padded_input, input_lengths, padded_target)
+        loss, n_correct = cal_performance(pred, gold, smoothing=args.label_smoothing)
 
         # Back prop.
         optimizer.zero_grad()

@@ -58,7 +58,7 @@ def train_net(args):
                                                shuffle=False, num_workers=num_workers, drop_last=True)
 
     # Epochs
-    for epoch in range(start_epoch, args.end_epoch):
+    for epoch in range(start_epoch, args.epochs):
         # One epoch's training
         train_loss = train(train_loader=train_loader,
                            model=model,

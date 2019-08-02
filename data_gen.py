@@ -74,4 +74,6 @@ if __name__ == "__main__":
 
     print([IVOCAB[idx] for idx in trn])
 
-    print(train_loader[0])
+    for data in train_loader:
+        print(data)
+        break

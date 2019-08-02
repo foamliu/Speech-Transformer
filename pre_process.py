@@ -75,3 +75,4 @@ if __name__ == "__main__":
     print('num_dev: ' + str(len(data['dev'])))
     print('num_test: ' + str(len(data['test'])))
     print('vocab_size: ' + str(len(data['VOCAB'])))
+

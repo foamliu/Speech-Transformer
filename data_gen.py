@@ -61,3 +61,5 @@ if __name__ == "__main__":
 
     print(len(train_dataset))
     print(len(train_loader))
+
+    print(train_dataset[0])

@@ -1,6 +1,7 @@
 import numpy as np
 import torch
 from tensorboardX import SummaryWriter
+from torch import nn
 
 from config import device, grad_clip, print_freq, vocab_size, num_workers, sos_id, eos_id
 from data_gen import AiShellDataset, pad_collate
@@ -33,7 +34,7 @@ def train_net(args):
                           tgt_emb_prj_weight_sharing=args.tgt_emb_prj_weight_sharing,
                           pe_maxlen=args.pe_maxlen)
         model = Transformer(encoder, decoder)
-        # model = nn.DataParallel(model)
+        model = nn.DataParallel(model)
 
         optimizer = torch.optim.Adam(model.parameters(), betas=(0.9, 0.98), eps=1e-09)
 

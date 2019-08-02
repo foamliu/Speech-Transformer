@@ -23,6 +23,9 @@ class Encoder(nn.Module):
         self.dropout_rate = dropout
         self.pe_maxlen = pe_maxlen
 
+        print('d_input: ' + str(d_input))
+        print('d_model: ' + str(d_model))
+
         # use linear transformation with layer norm to replace input embedding
         self.linear_in = nn.Linear(d_input, d_model)
         self.layer_norm_in = nn.LayerNorm(d_model)

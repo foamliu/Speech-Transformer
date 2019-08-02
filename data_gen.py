@@ -5,7 +5,7 @@ import torch
 from torch.utils.data import Dataset
 from torch.utils.data.dataloader import default_collate
 
-from config import num_workers, pickle_file, input_dim, maxle_in
+from config import num_workers, pickle_file, input_dim
 from utils import extract_feature
 
 
@@ -50,8 +50,6 @@ class AiShellDataset(Dataset):
         trn = sample['trn']
 
         feature = extract_feature(input_file=wave, feature='fbank', dim=input_dim)
-        if feature.shape[0] > maxle_in:
-            feature = feature[:maxle_in, ...]
 
         return feature, trn
 

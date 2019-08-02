@@ -7,7 +7,6 @@ device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')  # sets de
 # Model parameters
 input_dim = 40  # dimension of feature
 window_size = 25  # window size for FFT (ms)
-maxle_in = 800
 hidden_size = 512
 embedding_dim = 512
 stride = 10  # window stride for FFT

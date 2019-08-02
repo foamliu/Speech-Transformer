@@ -1,7 +1,7 @@
 import torch.nn as nn
+
 from .attention import MultiHeadAttention
 from .module import PositionalEncoding, PositionwiseFeedForward
-
 from .utils import get_non_pad_mask, get_attn_pad_mask
 
 
@@ -23,9 +23,6 @@ class Encoder(nn.Module):
         self.dropout_rate = dropout
         self.pe_maxlen = pe_maxlen
 
-        print('d_input: ' + str(d_input))
-        print('d_model: ' + str(d_model))
-
         # use linear transformation with layer norm to replace input embedding
         self.linear_in = nn.Linear(d_input, d_model)
         self.layer_norm_in = nn.LayerNorm(d_model)
@@ -45,9 +42,6 @@ class Encoder(nn.Module):
             enc_output: N x T x H
         """
         enc_slf_attn_list = []
-
-        print('padded_input.size(): ' + str(padded_input.size()))
-        print('input_lengths.size(): ' + str(input_lengths.size()))
 
         # Prepare masks
         non_pad_mask = get_non_pad_mask(padded_input, input_lengths=input_lengths)

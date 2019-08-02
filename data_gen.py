@@ -5,7 +5,7 @@ import torch
 from torch.utils.data import Dataset
 from torch.utils.data.dataloader import default_collate
 
-from config import num_workers, pickle_file, input_dim
+from config import num_workers, pickle_file
 from utils import extract_feature
 
 
@@ -37,7 +37,8 @@ def pad_collate(batch):
 
 
 class AiShellDataset(Dataset):
-    def __init__(self, split):
+    def __init__(self, args, split):
+        self.args = args
         with open(pickle_file, 'rb') as file:
             data = pickle.load(file)
 
@@ -49,7 +50,7 @@ class AiShellDataset(Dataset):
         wave = sample['wave']
         trn = sample['trn']
 
-        feature = extract_feature(input_file=wave, feature='fbank', dim=input_dim)
+        feature = extract_feature(input_file=wave, feature='fbank', dim=self.args.d_input)
 
         return feature, trn
 

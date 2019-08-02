@@ -84,7 +84,7 @@ def parse_args():
     # Network architecture
     # encoder
     # TODO: automatically infer input dim
-    parser.add_argument('--d_input', default=40, type=int,
+    parser.add_argument('--d_input', default=80, type=int,
                         help='Dim of encoder input (before LFR)')
     parser.add_argument('--n_layers_enc', default=6, type=int,
                         help='Number of encoder stacks')

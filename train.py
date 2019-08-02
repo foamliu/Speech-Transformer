@@ -54,10 +54,10 @@ def train_net(args):
     # Custom dataloaders
     train_dataset = AiShellDataset('train')
     train_loader = torch.utils.data.DataLoader(train_dataset, batch_size=args.batch_size, collate_fn=pad_collate,
-                                               shuffle=True, num_workers=num_workers)
+                                               shuffle=True, num_workers=args.num_workers)
     valid_dataset = AiShellDataset('dev')
     valid_loader = torch.utils.data.DataLoader(valid_dataset, batch_size=args.batch_size, collate_fn=pad_collate,
-                                               shuffle=False, num_workers=num_workers)
+                                               shuffle=False, num_workers=args.num_workers)
 
     # Epochs
     for epoch in range(start_epoch, args.epochs):

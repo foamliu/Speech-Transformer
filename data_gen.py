@@ -5,7 +5,7 @@ import torch
 from torch.utils.data import Dataset
 from torch.utils.data.dataloader import default_collate
 
-from config import num_workers, pickle_file
+from config import num_workers, pickle_file, input_dim
 from utils import extract_feature
 
 
@@ -49,7 +49,7 @@ class AiShellDataset(Dataset):
         wave = sample['wave']
         trn = sample['trn']
 
-        feature = extract_feature(wave)
+        feature = extract_feature(input_file=wave, feature='fbank', dim=input_dim)
         return feature, trn
 
     def __len__(self):

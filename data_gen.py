@@ -36,11 +36,12 @@ def pad_collate(batch):
 
 
 class AiShellDataset(Dataset):
-    def __init__(self, mode):
+    def __init__(self, split):
         with open(pickle_file, 'rb') as file:
             data = pickle.load(file)
 
-        self.samples = data[mode]
+        self.samples = data[split]
+        print('loading {} {} samples...'.format(len(self.samples), split))
 
     def __getitem__(self, i):
         sample = self.samples[i]

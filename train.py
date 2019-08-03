@@ -12,6 +12,8 @@ from transformer.optimizer import TransformerOptimizer
 from transformer.transformer import Transformer
 from utils import parse_args, save_checkpoint, AverageMeter, get_logger
 
+num_updates = 0
+
 
 def train_net(args):
     torch.manual_seed(7)
@@ -74,8 +76,8 @@ def train_net(args):
                            model=model,
                            optimizer=optimizer,
                            epoch=epoch,
-                           logger=logger)
-        writer.add_scalar('Train_Loss', train_loss, epoch)
+                           logger=logger,
+                           writer=writer)
 
         # One epoch's validation
         valid_loss = valid(valid_loader=valid_loader,
@@ -96,7 +98,7 @@ def train_net(args):
         save_checkpoint(epoch, epochs_since_improvement, model, optimizer, best_loss, is_best)
 
 
-def train(train_loader, model, optimizer, epoch, logger):
+def train(train_loader, model, optimizer, epoch, logger, writer):
     model.train()  # train mode (dropout and batchnorm is used)
 
     losses = AverageMeter()
@@ -126,11 +128,14 @@ def train(train_loader, model, optimizer, epoch, logger):
         # Keep track of metrics
         losses.update(loss.item())
 
+        global num_updates
+        num_updates += 1
+
         # Print status
         if i % print_freq == 0:
             logger.info('Epoch: [{0}][{1}/{2}]\t'
                         'Loss {loss.val:.4f} ({loss.avg:.4f})'.format(epoch, i, len(train_loader), loss=losses))
-
+            writer.add_scalar('Train_Loss', loss.item(), num_updates)
     return losses.avg
 
 

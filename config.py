@@ -22,7 +22,7 @@ print_freq = 100  # print training/validation stats  every __ batches
 checkpoint = None  # path to checkpoint, None if none
 
 # Data parameters
-IGNORE_ID = -1
+IGNORE_ID = 0
 pad_id = 0
 sos_id = 1
 eos_id = 2

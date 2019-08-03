@@ -5,7 +5,7 @@ import torch
 from torch.utils.data import Dataset
 from torch.utils.data.dataloader import default_collate
 
-from config import num_workers, pickle_file, IGNORE_ID
+from config import num_workers, pickle_file
 from utils import extract_feature
 
 
@@ -25,7 +25,7 @@ def pad_collate(batch):
         # print('f.shape: ' + str(f.shape))
         padded_input = np.zeros((max_input_len, input_dim), dtype=np.float32)
         padded_input[:input_length, :input_dim] = feature
-        padded_target = np.pad(trn, (0, max_target_len - len(trn)), 'constant', constant_values=IGNORE_ID)
+        padded_target = np.pad(trn, (0, max_target_len - len(trn)), 'constant', constant_values=0)
         batch[i] = (padded_input, padded_target, input_length)
         # print('feature.shape: ' + str(feature.shape))
         # print('trn.shape: ' + str(trn.shape))

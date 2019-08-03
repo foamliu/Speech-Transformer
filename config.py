@@ -30,6 +30,8 @@ num_dev = 14326
 num_test = 7176
 vocab_size = 4336
 
+IGNORE_ID = 0
+
 DATA_DIR = 'data'
 aishell_folder = 'data/data_aishell'
 wav_folder = os.path.join(aishell_folder, 'wav')

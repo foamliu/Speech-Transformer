@@ -3,14 +3,14 @@ import torch
 from tensorboardX import SummaryWriter
 from torch import nn
 
-from config import device, grad_clip, print_freq, vocab_size, sos_id, eos_id
+from config import device, print_freq, vocab_size, sos_id, eos_id
 from data_gen import AiShellDataset, pad_collate
 from transformer.decoder import Decoder
 from transformer.encoder import Encoder
 from transformer.loss import cal_performance
-from transformer.transformer import Transformer
 from transformer.optimizer import TransformerOptimizer
-from utils import parse_args, save_checkpoint, AverageMeter, clip_gradient, get_logger
+from transformer.transformer import Transformer
+from utils import parse_args, save_checkpoint, AverageMeter, get_logger
 
 
 def train_net(args):

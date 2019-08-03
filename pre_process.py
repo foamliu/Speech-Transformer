@@ -36,7 +36,7 @@ def get_data(split):
             key = f.split('.')[0]
             if key in tran_dict:
                 trn = tran_dict[key]
-                trn = list(trn.strip()) + ['<EOS>']
+                trn = list(trn.strip()) + ['<eos>']
 
                 for token in trn:
                     build_vocab(token)
@@ -58,8 +58,8 @@ def build_vocab(token):
 
 
 if __name__ == "__main__":
-    VOCAB = {'<PAD>': 0, '<SOS>': 1, '<EOS>': 2}
-    IVOCAB = {0: '<PAD>', 1: '<SOS>', 2: '<EOS>'}
+    VOCAB = {'<pad>': 0, '<sos>': 1, '<eos>': 2}
+    IVOCAB = {0: '<pad>', 1: '<sos>', 2: '<eos>'}
 
     data = dict()
     data['VOCAB'] = VOCAB

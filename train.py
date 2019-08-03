@@ -9,6 +9,7 @@ from transformer.decoder import Decoder
 from transformer.encoder import Encoder
 from transformer.loss import cal_performance
 from transformer.transformer import Transformer
+from transformer.optimizer import TransformerOptimizer
 from utils import parse_args, save_checkpoint, AverageMeter, clip_gradient, get_logger
 
 
@@ -37,7 +38,14 @@ def train_net(args):
         print(model)
         model = nn.DataParallel(model)
 
-        optimizer = torch.optim.Adam(model.parameters(), betas=(0.9, 0.98), eps=1e-09)
+        # optimizer = torch.optim.Adam(model.parameters(), betas=(0.9, 0.98), eps=1e-09)
+        # optimizer
+        optimizer = TransformerOptimizer(
+            torch.optim.Adam(model.parameters(), betas=(0.9, 0.98), eps=1e-09),
+            args.k,
+            args.d_model,
+            args.warmup_steps)
+
 
     else:
         checkpoint = torch.load(checkpoint)

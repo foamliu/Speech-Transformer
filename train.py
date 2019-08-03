@@ -118,7 +118,7 @@ def train(train_loader, model, optimizer, epoch, logger):
         loss.backward()
 
         # Clip gradients
-        clip_gradient(optimizer, grad_clip)
+        # clip_gradient(optimizer, grad_clip)
 
         # Update weights
         optimizer.step()

@@ -59,8 +59,10 @@ class AiShellDataset(Dataset):
 
 
 if __name__ == "__main__":
-    train_dataset = AiShellDataset('train')
-    train_loader = torch.utils.data.DataLoader(train_dataset, batch_size=4, shuffle=True, num_workers=num_workers,
+    from utils import parse_args
+    args = parse_args()
+    train_dataset = AiShellDataset(args, 'train')
+    train_loader = torch.utils.data.DataLoader(train_dataset, batch_size=2, shuffle=True, num_workers=num_workers,
                                                pin_memory=True, collate_fn=pad_collate)
 
     print(len(train_dataset))

@@ -36,7 +36,7 @@ def get_data(split):
             key = f.split('.')[0]
             if key in tran_dict:
                 trn = tran_dict[key]
-                trn = list(trn.strip()) + ['<eos>']
+                trn = ['<sos>'] + list(trn.strip()) + ['<eos>']
 
                 for token in trn:
                     build_vocab(token)
@@ -75,4 +75,3 @@ if __name__ == "__main__":
     print('num_dev: ' + str(len(data['dev'])))
     print('num_test: ' + str(len(data['test'])))
     print('vocab_size: ' + str(len(data['VOCAB'])))
-

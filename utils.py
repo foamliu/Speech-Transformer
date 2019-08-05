@@ -77,9 +77,9 @@ def accuracy(scores, targets, k=1):
 def parse_args():
     parser = argparse.ArgumentParser(description='Speech Transformer')
     # Low Frame Rate (stacking and skipping frames)
-    parser.add_argument('--LFR_m', default=4, type=int,
+    parser.add_argument('--LFR_m', default=1, type=int,
                         help='Low Frame Rate: number of frames to stack')
-    parser.add_argument('--LFR_n', default=3, type=int,
+    parser.add_argument('--LFR_n', default=1, type=int,
                         help='Low Frame Rate: number of frames to skip')
     # Network architecture
     # encoder

@@ -23,9 +23,9 @@ checkpoint = None  # path to checkpoint, None if none
 
 # Data parameters
 IGNORE_ID = -1
-pad_id = 0
-sos_id = 1
-eos_id = 2
+# pad_id = 0
+sos_id = 0
+eos_id = 1
 num_train = 120098
 num_dev = 14326
 num_test = 7176

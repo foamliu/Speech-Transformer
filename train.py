@@ -1,7 +1,7 @@
 import numpy as np
 import torch
 from tensorboardX import SummaryWriter
-from torch import nn
+from tqdm import tqdm
 
 from config import device, print_freq, vocab_size, sos_id, eos_id
 from data_gen import AiShellDataset, pad_collate
@@ -11,8 +11,6 @@ from transformer.loss import cal_performance
 from transformer.optimizer import TransformerOptimizer
 from transformer.transformer import Transformer
 from utils import parse_args, save_checkpoint, AverageMeter, get_logger
-
-num_updates = 0
 
 
 def train_net(args):
@@ -40,7 +38,6 @@ def train_net(args):
         print(model)
         # model = nn.DataParallel(model)
 
-        # optimizer = torch.optim.Adam(model.parameters(), betas=(0.9, 0.98), eps=1e-09)
         # optimizer
         optimizer = TransformerOptimizer(
             torch.optim.Adam(model.parameters(), betas=(0.9, 0.98), eps=1e-09),
@@ -75,8 +72,8 @@ def train_net(args):
                            model=model,
                            optimizer=optimizer,
                            epoch=epoch,
-                           logger=logger,
-                           writer=writer)
+                           logger=logger)
+        writer.add_scalar('Train_Loss', train_loss, epoch)
 
         # One epoch's validation
         valid_loss = valid(valid_loader=valid_loader,
@@ -97,7 +94,7 @@ def train_net(args):
         save_checkpoint(epoch, epochs_since_improvement, model, optimizer, best_loss, is_best)
 
 
-def train(train_loader, model, optimizer, epoch, logger, writer):
+def train(train_loader, model, optimizer, epoch, logger):
     model.train()  # train mode (dropout and batchnorm is used)
 
     losses = AverageMeter()
@@ -118,23 +115,17 @@ def train(train_loader, model, optimizer, epoch, logger, writer):
         optimizer.zero_grad()
         loss.backward()
 
-        # Clip gradients
-        # clip_gradient(optimizer, grad_clip)
-
         # Update weights
         optimizer.step()
 
         # Keep track of metrics
         losses.update(loss.item())
 
-        global num_updates
-        num_updates += 1
-
         # Print status
         if i % print_freq == 0:
             logger.info('Epoch: [{0}][{1}/{2}]\t'
                         'Loss {loss.val:.4f} ({loss.avg:.4f})'.format(epoch, i, len(train_loader), loss=losses))
-            writer.add_scalar('Train_Loss', loss.item(), num_updates)
+
     return losses.avg
 
 
@@ -144,16 +135,17 @@ def valid(valid_loader, model, logger):
     losses = AverageMeter()
 
     # Batches
-    for i, (data) in enumerate(valid_loader):
+    for data in tqdm(valid_loader):
         # Move to GPU, if available
         padded_input, padded_target, input_lengths = data
         padded_input = padded_input.to(device)
         padded_target = padded_target.to(device)
         input_lengths = input_lengths.to(device)
 
-        # Forward prop.
-        pred, gold = model(padded_input, input_lengths, padded_target)
-        loss, n_correct = cal_performance(pred, gold, smoothing=args.label_smoothing)
+        with torch.no_grad():
+            # Forward prop.
+            pred, gold = model(padded_input, input_lengths, padded_target)
+            loss, n_correct = cal_performance(pred, gold, smoothing=args.label_smoothing)
 
         # Keep track of metrics
         losses.update(loss.item())

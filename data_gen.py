@@ -9,13 +9,12 @@ from utils import extract_feature
 
 
 def pad_collate(batch):
-    # max_input_len = float('-inf')
-    max_input_len = 512
+    max_input_len = float('-inf')
     max_target_len = float('-inf')
 
     for elem in batch:
         feature, trn = elem
-        # max_input_len = max_input_len if max_input_len > feature.shape[0] else feature.shape[0]
+        max_input_len = max_input_len if max_input_len > feature.shape[0] else feature.shape[0]
         max_target_len = max_target_len if max_target_len > len(trn) else len(trn)
 
     for i, elem in enumerate(batch):

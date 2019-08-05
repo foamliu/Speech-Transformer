@@ -1,7 +1,7 @@
 import numpy as np
 import torch
 from tensorboardX import SummaryWriter
-from torch import nn
+# from torch import nn
 from tqdm import tqdm
 
 from config import device, print_freq, vocab_size, sos_id, eos_id
@@ -37,7 +37,7 @@ def train_net(args):
                           pe_maxlen=args.pe_maxlen)
         model = Transformer(encoder, decoder)
         print(model)
-        model = nn.DataParallel(model)
+        # model = nn.DataParallel(model)
 
         # optimizer
         optimizer = TransformerOptimizer(

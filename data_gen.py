@@ -10,7 +10,7 @@ from utils import extract_feature
 
 def pad_collate(batch):
     # max_input_len = float('-inf')
-    max_input_len = 500
+    max_input_len = 512
     max_target_len = float('-inf')
 
     for elem in batch:

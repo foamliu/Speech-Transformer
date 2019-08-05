@@ -58,8 +58,6 @@ def build_vocab(token):
 
 
 if __name__ == "__main__":
-    # VOCAB = {'<pad>': 0, '<sos>': 1, '<eos>': 2}
-    # IVOCAB = {0: '<pad>', 1: '<sos>', 2: '<eos>'}
     VOCAB = {'<sos>': 0, '<eos>': 1}
     IVOCAB = {0: '<sos>', 1: '<eos>'}
 

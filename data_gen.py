@@ -120,7 +120,8 @@ if __name__ == "__main__":
 
     for data in tqdm(train_loader):
         feature = data[0]
-        print(feature.shape)
-        break
+        # print(feature.shape)
+        if feature.shape[1] > max_len:
+            max_len = feature.shape[1]
 
     print('max_len: ' + str(max_len))

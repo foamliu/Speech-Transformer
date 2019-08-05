@@ -88,13 +88,14 @@ class AiShellDataset(Dataset):
 
 
 if __name__ == "__main__":
+    import torch
     from utils import parse_args
     from tqdm import tqdm
 
     args = parse_args()
     train_dataset = AiShellDataset(args, 'train')
-    # train_loader = torch.utils.data.DataLoader(train_dataset, batch_size=2, shuffle=True, num_workers=num_workers,
-    #                                            pin_memory=True, collate_fn=pad_collate)
+    train_loader = torch.utils.data.DataLoader(train_dataset, batch_size=32, shuffle=True, num_workers=args.num_workers,
+                                               collate_fn=pad_collate)
     #
     # print(len(train_dataset))
     # print(len(train_loader))
@@ -117,10 +118,9 @@ if __name__ == "__main__":
 
     max_len = 0
 
-    for data in tqdm(train_dataset):
+    for data in tqdm(train_loader):
         feature = data[0]
-        T = feature.shape[0]
-        if T > max_len:
-            max_len = T
+        print(feature.shape)
+        break
 
     print('max_len: ' + str(max_len))

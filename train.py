@@ -38,7 +38,7 @@ def train_net(args):
                           pe_maxlen=args.pe_maxlen)
         model = Transformer(encoder, decoder)
         print(model)
-        model = nn.DataParallel(model)
+        # model = nn.DataParallel(model)
 
         # optimizer = torch.optim.Adam(model.parameters(), betas=(0.9, 0.98), eps=1e-09)
         # optimizer
@@ -47,7 +47,6 @@ def train_net(args):
             args.k,
             args.d_model,
             args.warmup_steps)
-
 
     else:
         checkpoint = torch.load(checkpoint)
@@ -64,10 +63,10 @@ def train_net(args):
     # Custom dataloaders
     train_dataset = AiShellDataset(args, 'train')
     train_loader = torch.utils.data.DataLoader(train_dataset, batch_size=args.batch_size, collate_fn=pad_collate,
-                                               shuffle=True, num_workers=0)
+                                               shuffle=True, num_workers=args.num_workers)
     valid_dataset = AiShellDataset(args, 'dev')
     valid_loader = torch.utils.data.DataLoader(valid_dataset, batch_size=args.batch_size, collate_fn=pad_collate,
-                                               shuffle=False, num_workers=0)
+                                               shuffle=False, num_workers=args.num_workers)
 
     # Epochs
     for epoch in range(start_epoch, args.epochs):

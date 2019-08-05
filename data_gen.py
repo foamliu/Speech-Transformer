@@ -1,11 +1,10 @@
 import pickle
 
 import numpy as np
-import torch
 from torch.utils.data import Dataset
 from torch.utils.data.dataloader import default_collate
 
-from config import num_workers, pickle_file, IGNORE_ID
+from config import pickle_file, IGNORE_ID
 from utils import extract_feature
 
 
@@ -90,27 +89,38 @@ class AiShellDataset(Dataset):
 
 if __name__ == "__main__":
     from utils import parse_args
+    from tqdm import tqdm
 
     args = parse_args()
     train_dataset = AiShellDataset(args, 'train')
-    train_loader = torch.utils.data.DataLoader(train_dataset, batch_size=2, shuffle=True, num_workers=num_workers,
-                                               pin_memory=True, collate_fn=pad_collate)
+    # train_loader = torch.utils.data.DataLoader(train_dataset, batch_size=2, shuffle=True, num_workers=num_workers,
+    #                                            pin_memory=True, collate_fn=pad_collate)
+    #
+    # print(len(train_dataset))
+    # print(len(train_loader))
+    #
+    # feature = train_dataset[10][0]
+    # print(feature.shape)
+    #
+    # trn = train_dataset[10][1]
+    # print(trn)
+    #
+    # with open(pickle_file, 'rb') as file:
+    #     data = pickle.load(file)
+    # IVOCAB = data['IVOCAB']
+    #
+    # print([IVOCAB[idx] for idx in trn])
+    #
+    # for data in train_loader:
+    #     print(data)
+    #     break
 
-    print(len(train_dataset))
-    print(len(train_loader))
+    max_len = 0
 
-    feature = train_dataset[10][0]
-    print(feature.shape)
+    for data in tqdm(train_dataset):
+        feature = data[0]
+        T = feature.shape[0]
+        if T > max_len:
+            max_len = T
 
-    trn = train_dataset[10][1]
-    print(trn)
-
-    with open(pickle_file, 'rb') as file:
-        data = pickle.load(file)
-    IVOCAB = data['IVOCAB']
-
-    print([IVOCAB[idx] for idx in trn])
-
-    for data in train_loader:
-        print(data)
-        break
+    print('max_len: ' + str(max_len))

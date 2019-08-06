@@ -41,6 +41,7 @@ if __name__ == '__main__':
     mat = pe.pe.numpy()[0]  # (5000, 512)
     mat = np.transpose(mat, (1, 0))
     print(mat.shape)
+    print(mat)
     plt.imshow(mat)
     plt.colorbar()
     plt.show()

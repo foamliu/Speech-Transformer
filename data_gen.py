@@ -75,7 +75,7 @@ class AiShellDataset(Dataset):
         wave = sample['wave']
         trn = sample['trn']
 
-        feature = extract_feature(input_file=wave, feature='fbank', dim=self.args.d_input, cmvn=False)
+        feature = extract_feature(input_file=wave, feature='fbank', dim=self.args.d_input, cmvn=True)
         feature = build_LFR_features(feature, m=self.args.LFR_m, n=self.args.LFR_n)
 
         return feature, trn

@@ -79,8 +79,10 @@ def train_net(args):
         writer.add_scalar('Train_Loss', train_loss, epoch)
 
         lr = optimizer.lr
-        print('\nLearning rate: {}\n'.format(lr))
+        print('\nLearning rate: {}'.format(lr))
         writer.add_scalar('Learning_Rate', lr, epoch)
+        step_num = optimizer.step_num
+        print('Step num: {}\n'.format(step_num))
 
         # One epoch's validation
         valid_loss = valid(valid_loader=valid_loader,

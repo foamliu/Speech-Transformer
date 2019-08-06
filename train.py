@@ -35,7 +35,7 @@ def train_net(args):
                           tgt_emb_prj_weight_sharing=args.tgt_emb_prj_weight_sharing,
                           pe_maxlen=args.pe_maxlen)
         model = Transformer(encoder, decoder)
-        print(model)
+        # print(model)
         # model = nn.DataParallel(model)
 
         optimizer = torch.optim.Adam(model.parameters(), betas=(0.9, 0.98), eps=1e-09)

@@ -9,7 +9,6 @@ from data_gen import AiShellDataset, pad_collate
 from transformer.decoder import Decoder
 from transformer.encoder import Encoder
 from transformer.loss import cal_performance
-from transformer.optimizer import TransformerOptimizer
 from transformer.transformer import Transformer
 from utils import parse_args, save_checkpoint, AverageMeter, get_logger
 
@@ -63,10 +62,10 @@ def train_net(args):
     # Custom dataloaders
     train_dataset = AiShellDataset(args, 'train')
     train_loader = torch.utils.data.DataLoader(train_dataset, batch_size=args.batch_size, collate_fn=pad_collate,
-                                               shuffle=True, num_workers=args.num_workers)
+                                               pin_memory=True, shuffle=True, num_workers=args.num_workers)
     valid_dataset = AiShellDataset(args, 'dev')
     valid_loader = torch.utils.data.DataLoader(valid_dataset, batch_size=args.batch_size, collate_fn=pad_collate,
-                                               shuffle=False, num_workers=args.num_workers)
+                                               pin_memory=True, shuffle=False, num_workers=args.num_workers)
 
     # Epochs
     for epoch in range(start_epoch, args.epochs):

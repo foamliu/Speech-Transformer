@@ -13,11 +13,11 @@ def parse_args():
     parser = argparse.ArgumentParser(
         "End-to-End Automatic Speech Recognition Decoding.")
     # decode
-    parser.add_argument('--beam_size', default=1, type=int,
+    parser.add_argument('--beam_size', default=5, type=int,
                         help='Beam size')
     parser.add_argument('--nbest', default=1, type=int,
                         help='Nbest size')
-    parser.add_argument('--decode_max_len', default=0, type=int,
+    parser.add_argument('--decode_max_len', default=100, type=int,
                         help='Max output length. If ==0 (default), it uses a '
                              'end-detect function to automatically find maximum '
                              'hypothesis lengths')

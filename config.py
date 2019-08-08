@@ -12,6 +12,8 @@ hidden_size = 512
 embedding_dim = 512
 cmvn = True  # apply CMVN on feature
 num_layers = 4
+LFR_m = 4
+LFR_n = 3
 
 # Training parameters
 grad_clip = 5.  # clip gradients at an absolute value of

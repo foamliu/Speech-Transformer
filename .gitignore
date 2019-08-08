@@ -1,2 +1,6 @@
 .idea
 __pycache__/
+BEST_checkpoint.tar
+checkpoint.tar
+data/
+runs/

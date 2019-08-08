@@ -34,7 +34,7 @@ if __name__ == '__main__':
     samples = data['test']
 
     checkpoint = 'BEST_checkpoint.tar'
-    checkpoint = torch.load(checkpoint)
+    checkpoint = torch.load(checkpoint, map_location='cpu')
     model = checkpoint['model'].module.to(device)
     model.eval()
 

@@ -40,6 +40,7 @@ if __name__ == '__main__':
 
     samples = random.sample(samples, 10)
     ensure_folder('audios')
+    result = []
 
     for i, sample in enumerate(samples):
         wave = sample['wave']
@@ -58,6 +59,13 @@ if __name__ == '__main__':
         out = [char_list[idx] for idx in out]
         print(out)
 
-        trn = [char_list[idx] for idx in trn]
-        trn = ''.join(trn)
-        print('GT: {}\n'.format(trn))
+        gt = [char_list[idx] for idx in trn]
+        gt = ''.join(gt)
+        print('GT: {}\n'.format(gt))
+
+        result.append({'out_{}'.format(i): out, 'gt_{}'.format(i): gt})
+
+    import json
+
+    with open('result.json', 'w') as file:
+        json.dump(result, file)

@@ -55,7 +55,7 @@ if __name__ == '__main__':
         input_length = [input[0].shape[0]]
         input_length = torch.LongTensor(input_length).to(device)
         nbest_hyps = model.recognize(input, input_length, char_list, args)
-        out = nbest_hyps['yseq'][0]
+        out = nbest_hyps[0]['yseq']
         out = [char_list[idx] for idx in out]
         print('OUT: {}'.format(out))
 

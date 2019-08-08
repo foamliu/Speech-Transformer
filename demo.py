@@ -57,7 +57,7 @@ if __name__ == '__main__':
         nbest_hyps = model.recognize(input, input_length, char_list, args)
         out = nbest_hyps['yseq'][0]
         out = [char_list[idx] for idx in out]
-        print(out)
+        print('OUT: {}'.format(out))
 
         gt = [char_list[idx] for idx in trn]
         gt = ''.join(gt)

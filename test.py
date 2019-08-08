@@ -7,7 +7,7 @@ from tqdm import tqdm
 from config import pickle_file, device, input_dim, LFR_m, LFR_n
 from data_gen import build_LFR_features
 from utils import extract_feature
-from xer import cer
+from xer import cer_function
 
 
 def parse_args():
@@ -65,7 +65,7 @@ if __name__ == '__main__':
         gt = ''.join(gt)
         gt_list = [gt]
 
-        cer = cer(gt_list, hyp_list)
+        cer = cer_function(gt_list, hyp_list)
         total_cer += cer
 
     avg_cer = total_cer / num_samples

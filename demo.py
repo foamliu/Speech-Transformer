@@ -8,7 +8,7 @@ import torch
 from config import pickle_file, device, input_dim, LFR_m, LFR_n
 from data_gen import build_LFR_features
 from utils import extract_feature, ensure_folder
-from xer import cer
+from xer import cer_function
 
 
 def parse_args():

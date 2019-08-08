@@ -70,5 +70,5 @@ def cer(ref, hyp):
 if __name__ == '__main__':
     ref = ['天然气用户为优先允许限制类和禁止类']
     hyp = ['天然气用户为优先允许限制类和禁止量内', '天然气用户为优先允许限制类和禁止质内', '天然气用户为优先允许限制类和禁止量量', '天然气用户为优先允许限制类和禁止量类', '天然气用户为优先允许限制类和禁止质量']
-    cer = cer(ref, hyp)
-    print(cer)
+    cer_function = cer_function(ref, hyp)
+    print(cer_function)

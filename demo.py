@@ -16,7 +16,7 @@ def parse_args():
     # decode
     parser.add_argument('--beam_size', default=5, type=int,
                         help='Beam size')
-    parser.add_argument('--nbest', default=1, type=int,
+    parser.add_argument('--nbest', default=5, type=int,
                         help='Nbest size')
     parser.add_argument('--decode_max_len', default=100, type=int,
                         help='Max output length. If ==0 (default), it uses a '
@@ -55,16 +55,19 @@ if __name__ == '__main__':
         input_length = [input[0].shape[0]]
         input_length = torch.LongTensor(input_length).to(device)
         nbest_hyps = model.recognize(input, input_length, char_list, args)
-        out = nbest_hyps[0]['yseq']
-        out = [char_list[idx] for idx in out]
-        out = ''.join(out)
-        print('OUT: {}'.format(out))
+        out_list = []
+        for hyp in nbest_hyps:
+            out = hyp['yseq']
+            out = [char_list[idx] for idx in out]
+            out = ''.join(out)
+            out_list.append(out)
+        print('OUT_LIST: {}'.format(out_list))
 
         gt = [char_list[idx] for idx in trn]
         gt = ''.join(gt)
         print('GT: {}\n'.format(gt))
 
-        result.append({'out_{}'.format(i): out, 'gt_{}'.format(i): gt})
+        result.append({'out_list_{}'.format(i): out_list, 'gt_{}'.format(i): gt})
 
     import json
 

@@ -43,7 +43,7 @@ def load_file(fname, encoding):
     return data
 
 
-def cer(ref, hyp):
+def cer_function(ref, hyp):
     wer_s, wer_i, wer_d, wer_n = 0, 0, 0, 0
     cer_s, cer_i, cer_d, cer_n = 0, 0, 0, 0
     sen_err = 0

@@ -7,6 +7,7 @@ from tqdm import tqdm
 from config import pickle_file, device, input_dim, LFR_m, LFR_n
 from data_gen import build_LFR_features
 from utils import extract_feature
+from xer import cer
 
 
 def parse_args():

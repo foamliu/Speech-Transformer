@@ -6,6 +6,7 @@ from shutil import copyfile
 import torch
 
 from config import pickle_file, device
+from data_gen import build_LFR_features
 from utils import extract_feature, ensure_folder
 
 
@@ -47,6 +48,8 @@ if __name__ == '__main__':
         copyfile(wave, 'audios/audio_{}.wav'.format(i))
 
         input = extract_feature(input_file=wave, feature='fbank', dim=80)
+        feature = extract_feature(input_file=wave, feature='fbank', dim=args.d_input, cmvn=True)
+        feature = build_LFR_features(feature, m=args.LFR_m, n=args.LFR_n)
         # input = np.expand_dims(input, axis=0)
         input = torch.from_numpy(input).to(device)
         input_length = [input[0].shape[0]]

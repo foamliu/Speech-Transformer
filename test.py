@@ -1,14 +1,12 @@
 import argparse
 import pickle
-import random
-from shutil import copyfile
 
 import torch
+from tqdm import tqdm
 
 from config import pickle_file, device, input_dim, LFR_m, LFR_n
 from data_gen import build_LFR_features
-from utils import extract_feature, ensure_folder
-from xer import cer
+from utils import extract_feature
 
 
 def parse_args():
@@ -39,15 +37,14 @@ if __name__ == '__main__':
     model = checkpoint['model']
     model.eval()
 
-    samples = random.sample(samples, 10)
-    ensure_folder('audios')
-    results = []
+    num_samples = len(samples)
 
-    for i, sample in enumerate(samples):
+    total_cer = 0
+
+    for i in tqdm(range(num_samples)):
+        sample = samples[i]
         wave = sample['wave']
         trn = sample['trn']
-
-        copyfile(wave, 'audios/audio_{}.wav'.format(i))
 
         feature = extract_feature(input_file=wave, feature='fbank', dim=input_dim, cmvn=True)
         feature = build_LFR_features(feature, m=LFR_m, n=LFR_n)
@@ -56,21 +53,20 @@ if __name__ == '__main__':
         input_length = [input[0].shape[0]]
         input_length = torch.LongTensor(input_length).to(device)
         nbest_hyps = model.recognize(input, input_length, char_list, args)
-        out_list = []
+        hyp_list = []
         for hyp in nbest_hyps:
             out = hyp['yseq']
             out = [char_list[idx] for idx in out]
             out = ''.join(out)
-            out_list.append(out)
-        print('OUT_LIST: {}'.format(out_list))
+            hyp_list.append(out)
 
         gt = [char_list[idx] for idx in trn]
         gt = ''.join(gt)
-        print('GT: {}\n'.format(gt))
+        gt_list = [gt]
 
-        results.append({'out_list_{}'.format(i): out_list, 'gt_{}'.format(i): gt})
+        cer = cer(gt_list, hyp_list)
+        total_cer += cer
 
-    import json
+    avg_cer = total_cer / num_samples
 
-    with open('results.json', 'w') as file:
-        json.dump(results, file, indent=4, ensure_ascii=False)
+    print('avg_cer: ' + str(avg_cer))

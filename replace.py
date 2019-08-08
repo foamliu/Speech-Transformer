@@ -6,7 +6,7 @@ if __name__ == '__main__':
         text = file.readlines()
     text = ''.join(text)
 
-    with open('result.json', 'r', encoding="utf-8") as file:
+    with open('results.json', 'r', encoding="utf-8") as file:
         results = json.load(file)
 
     print(results[0])

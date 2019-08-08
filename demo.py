@@ -47,11 +47,10 @@ if __name__ == '__main__':
 
         copyfile(wave, 'audios/audio_{}.wav'.format(i))
 
-        input = extract_feature(input_file=wave, feature='fbank', dim=80)
         feature = extract_feature(input_file=wave, feature='fbank', dim=input_dim, cmvn=True)
         feature = build_LFR_features(feature, m=LFR_m, n=LFR_n)
-        # input = np.expand_dims(input, axis=0)
-        input = torch.from_numpy(input).to(device)
+        # feature = np.expand_dims(feature, axis=0)
+        input = torch.from_numpy(feature).to(device)
         input_length = [input[0].shape[0]]
         input_length = torch.LongTensor(input_length).to(device)
         nbest_hyps = model.recognize(input, input_length, char_list, args)

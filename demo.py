@@ -72,4 +72,4 @@ if __name__ == '__main__':
     import json
 
     with open('result.json', 'w') as file:
-        json.dump(result, file)
+        json.dump(result, file, indent=4, ensure_ascii=False)

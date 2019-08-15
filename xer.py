@@ -64,11 +64,12 @@ def cer_function(ref, hyp):
         if s + i + d > 0:
             sen_err += 1
 
+    print(cer_s, cer_i, cer_d, cer_n)
     return (cer_s + cer_i + cer_d) / cer_n
 
 
 if __name__ == '__main__':
     ref = ['天然气用户为优先允许限制类和禁止类']
-    hyp = ['天然气用户为优先允许限制类和禁止量内', '天然气用户为优先允许限制类和禁止质内', '天然气用户为优先允许限制类和禁止量量', '天然气用户为优先允许限制类和禁止量类', '天然气用户为优先允许限制类和禁止质量']
+    hyp = ['天然气用户为优先允许限制类和禁止量内']
     cer_function = cer_function(ref, hyp)
     print(cer_function)

@@ -39,14 +39,14 @@ def train_net(args):
         # print(model)
         # model = nn.DataParallel(model)
 
-        # optimizer = torch.optim.Adam(model.parameters(), betas=(0.9, 0.98), eps=1e-09)
+        optimizer = torch.optim.Adam(model.parameters(), lr=args.lr, betas=(0.9, 0.98), eps=1e-09)
 
         # optimizer
-        optimizer = TransformerOptimizer(
-            torch.optim.Adam(model.parameters(), betas=(0.9, 0.98), eps=1e-09),
-            args.k,
-            args.d_model,
-            args.warmup_steps)
+        # optimizer = TransformerOptimizer(
+        #     torch.optim.Adam(model.parameters(), betas=(0.9, 0.98), eps=1e-09),
+        #     args.k,
+        #     args.d_model,
+        #     args.warmup_steps)
 
     else:
         checkpoint = torch.load(checkpoint)

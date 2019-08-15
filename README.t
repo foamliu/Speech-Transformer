@@ -24,6 +24,12 @@ In data folder, download speech data and transcripts:
 $ wget http://www.openslr.org/resources/33/data_aishell.tgz
 ```
 
+## Performance
+
+|Model|CER|Download|
+|---|---|---|
+|Speech Transformer|14.9|[Link]()|
+
 ## Dependency
 
 - Python 3.5.2

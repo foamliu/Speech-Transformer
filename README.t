@@ -26,6 +26,13 @@ $ wget http://www.openslr.org/resources/33/data_aishell.tgz
 
 ## Performance
 
+Evaluate with 7176 audios in Aishell test set:
+```bash
+$ python test.py
+```
+
+## Results
+
 |Model|CER|Download|
 |---|---|---|
 |Speech Transformer|14.9|[Link]()|

@@ -4,3 +4,4 @@ BEST_checkpoint.tar
 checkpoint.tar
 data/
 runs/
+nohup.out

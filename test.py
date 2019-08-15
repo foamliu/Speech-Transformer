@@ -4,7 +4,7 @@ import pickle
 import torch
 from tqdm import tqdm
 
-from config import pickle_file, device, input_dim, LFR_m, LFR_n
+from config import pickle_file, device, input_dim, LFR_m, LFR_n, sos_id, eos_id
 from data_gen import build_LFR_features
 from utils import extract_feature
 from xer import cer_function
@@ -59,13 +59,13 @@ if __name__ == '__main__':
         hyp_list = []
         for hyp in nbest_hyps:
             out = hyp['yseq']
-            out = [char_list[idx] for idx in out]
+            out = [char_list[idx] for idx in out if idx not in (sos_id, eos_id)]
             out = ''.join(out)
             hyp_list.append(out)
 
         print(hyp_list)
 
-        gt = [char_list[idx] for idx in trn]
+        gt = [char_list[idx] for idx in trn if idx not in (sos_id, eos_id)]
         gt = ''.join(gt)
         gt_list = [gt]
 

@@ -63,9 +63,13 @@ if __name__ == '__main__':
             out = ''.join(out)
             hyp_list.append(out)
 
+        print(hyp_list)
+
         gt = [char_list[idx] for idx in trn]
         gt = ''.join(gt)
         gt_list = [gt]
+
+        print(gt_list)
 
         cer = cer_function(gt_list, hyp_list)
         total_cer += cer

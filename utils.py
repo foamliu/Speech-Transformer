@@ -119,7 +119,7 @@ def parse_args():
     # minibatch
     parser.add_argument('--shuffle', default=1, type=int,
                         help='reshuffle the data at every epoch')
-    parser.add_argument('--batch-size', default=16, type=int,
+    parser.add_argument('--batch-size', default=32, type=int,
                         help='Batch size')
     parser.add_argument('--batch_frames', default=0, type=int,
                         help='Batch frames. If this is not 0, batch size will make no sense')

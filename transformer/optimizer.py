@@ -18,3 +18,7 @@ class TransformerOptimizer(object):
 
     def _update_lr(self):
         self.step_num += 1
+
+    def update_lr(self, lr):
+        for param_group in self.optimizer.param_groups:
+            param_group['lr'] = lr

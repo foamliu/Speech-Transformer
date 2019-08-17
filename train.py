@@ -49,8 +49,7 @@ def train_net(args):
         epochs_since_improvement = checkpoint['epochs_since_improvement']
         model = checkpoint['model']
         optimizer = checkpoint['optimizer']
-        for param_group in optimizer.param_groups:
-            param_group['lr'] = args.lr
+        optimizer.update_lr(args.lr)
 
     logger = get_logger()
 

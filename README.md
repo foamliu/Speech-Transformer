@@ -84,12 +84,6 @@ If you want to visualize during training, run in your terminal:
 $ tensorboard --logdir runs
 ```
 
-![image](https://github.com/foamliu/Speech-Transformer/raw/master/images/learning_rate.jpg)
-
-![image](https://github.com/foamliu/Speech-Transformer/raw/master/images/train_loss.jpg)
-
-![image](https://github.com/foamliu/Speech-Transformer/raw/master/images/valid_loss.jpg)
-
 ### Demo
 Pick 10 random test examples from test set:
 ```bash

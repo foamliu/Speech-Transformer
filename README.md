@@ -35,7 +35,7 @@ $ python test.py
 
 |Model|CER|Download|
 |---|---|---|
-|Speech Transformer|14.9|[Link](https://github.com/foamliu/Speech-Transformer/releases/download/v1.0/BEST_checkpoint.tar)|
+|Speech Transformer|12.1|[Link](https://github.com/foamliu/Speech-Transformer/releases/download/v1.0/BEST_checkpoint.tar)|
 
 ## Dependency
 
@@ -97,13 +97,13 @@ $ python demo.py
 ```
 |Audio|Out|GT|
 |---|---|---|
-|[audio_0.wav](https://github.com/foamliu/Speech-Transformer/raw/master/audios/audio_0.wav)|冰雪属立公共交通六千发债理念<br>冰雪属立公共交通六千发展理念<br>必雪属立公共交通六千发债理念<br>必雪属立公共交通六千发展理念<br>冰雪属立公共交通六线发债理念|必须树立公共交通优先发展理念|
-|[audio_1.wav](https://github.com/foamliu/Speech-Transformer/raw/master/audios/audio_1.wav)|成为圈字里手去一直的超大企业<br>成为圈子里手去一直的超大企业<br>成为圈字里手去一纸的超大企业<br>成为圈子里手去一纸的超大企业<br>成为圈字里首去一直的超大企业|成为圈子里首屈一指的超大企业|
-|[audio_2.wav](https://github.com/foamliu/Speech-Transformer/raw/master/audios/audio_2.wav)|再次降低公积金贷款首付比例<br>再次较低公积金贷款首付比例<br>再次降低公积因贷款首付比例<br>再再降低公积金贷款首付比例<br>再次价低公积金贷款首付比例|再次降低公积金贷款首付比例|
-|[audio_3.wav](https://github.com/foamliu/Speech-Transformer/raw/master/audios/audio_3.wav)|多了出为人们的幸福观彩<br>多了初为人们的幸福观彩<br>多了出为人们的幸福光彩<br>多是出为人们的幸福观彩<br>多着出为人们的幸福观彩|多了初为人母的幸福光彩|
-|[audio_4.wav](https://github.com/foamliu/Speech-Transformer/raw/master/audios/audio_4.wav)|但是里免不是淡顶的<br>但是里面不是淡顶的<br>但是里免不是淡定的<br>但是里面不是淡定的<br>但是里免不是半顶的|但是里面不是淡定的|
-|[audio_5.wav](https://github.com/foamliu/Speech-Transformer/raw/master/audios/audio_5.wav)|温证火国先审后续涉案者父亲协公开到前行<br>温证火国先审后续涉案者父亲写公开到前行<br>温州火国先审后续涉案者父亲协公开到前行<br>温州火国先审后续涉案者父亲写公开到前行<br>温证火国先审后续涉案者父亲些公开到前行|温州火锅先生后续涉案者父亲写公开道歉信|
-|[audio_6.wav](https://github.com/foamliu/Speech-Transformer/raw/master/audios/audio_6.wav)|以加强产销衔接为重点<br>一加强产销衔接为重点<br>以加强产销行接为重点<br>以家强产销衔接为重点<br>一加强产销行接为重点|以加强产销衔接为重点|
-|[audio_7.wav](https://github.com/foamliu/Speech-Transformer/raw/master/audios/audio_7.wav)|香港海关严查水后各<br>香港海关严查水后个<br>香港海关严查水货各<br>香港海关严查水或各<br>相港海关严查水后各|香港海关严查水货客|
-|[audio_8.wav](https://github.com/foamliu/Speech-Transformer/raw/master/audios/audio_8.wav)|背后涉及到百万车主的信息安全<br>背后涉及高百万车主的信息安全<br>背后涉及告百万车主的信息安全<br>背后涉集到百万车主的信息安全<br>背后涉级到百万车主的信息安全|背后涉及到百万车主的信息安全|
-|[audio_9.wav](https://github.com/foamliu/Speech-Transformer/raw/master/audios/audio_9.wav)|这些税费均无法避免<br>这些税费均有法避免<br>这些税费居无法避免<br>这些税费均已法避免<br>这些税费拘无法避免|这些税费均无法避免|
+|[audio_0.wav](https://github.com/foamliu/Speech-Transformer/raw/master/audios/audio_0.wav)|游客日照海森店被打受伤警方成言与出突引发服务<br>如客日照海森店被打受伤警方成言与出突引发服务<br>游客日照海身店被打受伤警方成言与出突引发服务<br>如客日照海身店被打受伤警方成言与出突引发服务<br>游客日照海深店被打受伤警方成言与出突引发服务|游客日照海鲜店被打受伤警方称言语冲突引发互殴|
+|[audio_1.wav](https://github.com/foamliu/Speech-Transformer/raw/master/audios/audio_1.wav)|我们应该建设可控的规范化的地方政府融资机制<br>我们应该建设可空的规范化的地方政府融资机制<br>我们应该建设可控的规范划的地方政府融资机制<br>我们因该建设可控的规范化的地方政府融资机制<br>我们应该建设可控地规范化的地方政府融资机制|我们应该建设可控的规范化的地方政府融资机制|
+|[audio_2.wav](https://github.com/foamliu/Speech-Transformer/raw/master/audios/audio_2.wav)|在布去六个月中处于高点<br>在布局六个月中处于高点<br>在布去六个月中处于高点的<br>在布局六个月中处于高点的<br>在不去六个月中处于高点|在过去六个月中处于高点|
+|[audio_3.wav](https://github.com/foamliu/Speech-Transformer/raw/master/audios/audio_3.wav)|中国队教练图还是做出了让朱婷继续修战的这责<br>中国队教练图还是做出了让朱同继续修战的这责<br>中国队教练图还是做出了让朱婷继续休战的这责<br>中国队教练图还是做出了让朱停继续修战的这责<br>中国队教练图还是做出了让朱体继续修战的这责|中国队教练组还是做出了让朱婷继续休战的抉择|
+|[audio_4.wav](https://github.com/foamliu/Speech-Transformer/raw/master/audios/audio_4.wav)|一计不会在短期内迅速回暖<br>一及不会在短期内迅速回暖<br>一举不会在短期内迅速回暖<br>预计不会在短期内迅速回暖<br>预及不会在短期内迅速回暖|预计不会在短期内迅速回暖|
+|[audio_5.wav](https://github.com/foamliu/Speech-Transformer/raw/master/audios/audio_5.wav)|男友却仍然批腿偷吃<br>男友却人然批腿偷吃<br>难友却仍然批腿偷吃<br>男友却仍然批腿透吃<br>难友却人然批腿偷吃|男友却仍然劈腿偷吃|
+|[audio_6.wav](https://github.com/foamliu/Speech-Transformer/raw/master/audios/audio_6.wav)|兰州楼市出现明显的区域分化<br>兰州楼市出现明显的区域分<br>兰州楼市出现明显的区于分化<br>兰州楼市出现明显的区域分华<br>兰州楼市出现明显地区域分化|兰州楼市出现明显的区域分化|
+|[audio_7.wav](https://github.com/foamliu/Speech-Transformer/raw/master/audios/audio_7.wav)|这一系列公积金门槛放地额度提高的调整<br>这一系列攻积金门槛放地额度提高的调整<br>这一系列公积金门槛放低额度提高的调整<br>这一系列攻积金门槛放低额度提高的调整<br>这一系列共积金门槛放地额度提高的调整|这一系列公积金门槛放低额度提高的调整|
+|[audio_8.wav](https://github.com/foamliu/Speech-Transformer/raw/master/audios/audio_8.wav)|十年二三岁的杨助军在北京抢劫杀害了一名出租车司机<br>十年二三岁的杨助君在北京抢劫杀害了一名出租车司机<br>十年二三岁的杨柱军在北京抢劫杀害了一名出租车司机<br>十年二三岁的杨柱君在北京抢劫杀害了一名出租车司机<br>十年二三岁的扬助军在北京抢劫杀害了一名出租车司机|时年二三岁的杨柱军在北京抢劫杀害了一名出租车司机|
+|[audio_9.wav](https://github.com/foamliu/Speech-Transformer/raw/master/audios/audio_9.wav)|在确保系统顺利运行的情况下<br>在确保系统顺力运行的情况下<br>在确保系统顺立运行的情况下<br>在确保系统顺利运型的情况下<br>在确保系统顺丽运行的情况下|在确保系统顺利运行的情况下|

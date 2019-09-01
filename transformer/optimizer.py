@@ -4,7 +4,7 @@ import numpy as np
 class TransformerOptimizer(object):
     """A simple wrapper class for learning rate scheduling"""
 
-    def __init__(self, optimizer, max_lr=1e-3, min_lr=1e-5, warmup_steps=4000, k=0.0004):
+    def __init__(self, optimizer, max_lr=1e-3, min_lr=1e-5, warmup_steps=25000, k=0.0001):
         self.optimizer = optimizer
         self.max_lr = max_lr
         self.min_lr = min_lr

@@ -72,11 +72,11 @@ def train_net(args):
                            optimizer=optimizer,
                            epoch=epoch,
                            logger=logger)
-        writer.add_scalar('Train_Loss', train_loss, epoch)
+        writer.add_scalar('model/train_loss', train_loss, epoch)
 
         lr = optimizer.lr
         print('\nLearning rate: {}'.format(lr))
-        writer.add_scalar('Learning_Rate', lr, epoch)
+        writer.add_scalar('model/learning_rate', lr, epoch)
         step_num = optimizer.step_num
         print('Step num: {}\n'.format(step_num))
 
@@ -84,7 +84,7 @@ def train_net(args):
         valid_loss = valid(valid_loader=valid_loader,
                            model=model,
                            logger=logger)
-        writer.add_scalar('Valid_Loss', valid_loss, epoch)
+        writer.add_scalar('model/valid_loss', valid_loss, epoch)
 
         # Check if there was an improvement
         is_best = valid_loss < best_loss

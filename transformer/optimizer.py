@@ -1,10 +1,7 @@
-import numpy as np
-
-
 class TransformerOptimizer(object):
     """A simple wrapper class for learning rate scheduling"""
 
-    def __init__(self, optimizer, max_lr=1e-3, min_lr=1e-5, warmup_steps=4000, k=0.2):
+    def __init__(self, optimizer, warmup_steps=4000, k=0.2):
         self.optimizer = optimizer
         self.k = k
         self.warmup_steps = warmup_steps
@@ -14,7 +11,6 @@ class TransformerOptimizer(object):
         self.warmup_steps = warmup_steps
         self.k = k
         self.step_num = 0
-
 
     def zero_grad(self):
         self.optimizer.zero_grad()

@@ -14,6 +14,7 @@ cmvn = True  # apply CMVN on feature
 num_layers = 4
 LFR_m = 4
 LFR_n = 3
+sample_rate = 16000  # aishell
 
 # Training parameters
 grad_clip = 5.  # clip gradients at an absolute value of

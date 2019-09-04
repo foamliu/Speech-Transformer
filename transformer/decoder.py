@@ -159,11 +159,10 @@ class Decoder(nn.Module):
             hyps_best_kept = []
             for hyp in hyps:
                 ys = hyp['yseq']  # 1 x i
-                print('ys: ' + str(ys))
                 last_id = ys.cpu().numpy()[0][-1]
-                print('last_id: ' + str(last_id))
-                print(bigram_freq[last_id])
-                print('bigram_freq[last_id]: ' + str(bigram_freq[last_id]))
+                freq = bigram_freq[last_id]
+                freq = torch.log(torch.from_numpy(freq))
+                print('freq: ' + str(freq))
                 # -- Prepare masks
                 non_pad_mask = torch.ones_like(ys).float().unsqueeze(-1)  # 1xix1
                 slf_attn_mask = get_subsequent_mask(ys)

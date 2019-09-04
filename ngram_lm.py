@@ -40,9 +40,10 @@ for i in tqdm(range(vocab_size)):
             freq_list.append(bigram_freq[(i, j)])
         else:
             freq_list.append(1)
-    assert (len(freq_list) == vocab_size)
+
     freq_list = np.array(freq_list)
     freq_list = freq_list / np.sum(freq_list)
+    assert (len(freq_list) == vocab_size)
     bigram_freq[i] = freq_list
 
 with open('bigram_freq.pkl', 'wb') as file:

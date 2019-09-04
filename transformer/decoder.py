@@ -152,6 +152,7 @@ class Decoder(nn.Module):
             hyps_best_kept = []
             for hyp in hyps:
                 ys = hyp['yseq']  # 1 x i
+                print(ys)
 
                 # -- Prepare masks
                 non_pad_mask = torch.ones_like(ys).float().unsqueeze(-1)  # 1xix1
@@ -172,6 +173,7 @@ class Decoder(nn.Module):
                 seq_logit = self.tgt_word_prj(dec_output[:, -1])
                 # local_scores = F.log_softmax(seq_logit, dim=1)
                 local_scores = F.log_softmax(seq_logit, dim=1)
+                print(local_scores)
 
                 # topk scores
                 local_best_scores, local_best_ids = torch.topk(

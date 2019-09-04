@@ -2,6 +2,7 @@ import collections
 import pickle
 
 import nltk
+import numpy as np
 from tqdm import tqdm
 
 from config import pickle_file
@@ -30,19 +31,19 @@ bigram_freq = dict()
 for key, value in bigram_counter.items():
     bigram_freq[key] = value
 
-print('smoothing')
+print('smoothing and freq -> prob')
+bigram_freq = dict()
 for i in tqdm(range(vocab_size)):
+    freq_list = []
     for j in range(vocab_size):
         if (i, j) not in bigram_freq:
-            bigram_freq[(i, j)] = 1
-
-print('freq -> prob')
-for i in tqdm(range(vocab_size)):
-    total = 0
-    for j in range(vocab_size):
-        total += bigram_freq[(i, j)]
-    for j in range(vocab_size):
-        bigram_freq[(i, j)] = bigram_freq[(i, j)] / total
+            freq_list.append(1)
+        else:
+            freq_list.append(bigram_freq[(i, j)])
+    assert (len(freq_list) == vocab_size)
+    freq_list = np.array(freq_list)
+    freq_list = freq_list / np.sum(freq_list)
+    bigram_freq[i] = freq_list
 
 with open('bigram_freq.pkl', 'wb') as file:
     pickle.dump(bigram_freq, file)

@@ -27,9 +27,9 @@ for sample in tqdm(samples):
 # what are the ten most popular ngrams in this Spanish corpus?
 print(bigram_counter.most_common(10))
 
-bigram_freq = dict()
+temp_dict = dict()
 for key, value in bigram_counter.items():
-    bigram_freq[key] = value
+    temp_dict[key] = value
 
 print('smoothing and freq -> prob')
 bigram_freq = dict()
@@ -37,7 +37,7 @@ for i in tqdm(range(vocab_size)):
     freq_list = []
     for j in range(vocab_size):
         if (i, j) in bigram_freq:
-            freq_list.append(bigram_freq[(i, j)])
+            freq_list.append(temp_dict[(i, j)])
         else:
             freq_list.append(1)
 

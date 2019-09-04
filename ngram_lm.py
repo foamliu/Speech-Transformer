@@ -30,11 +30,13 @@ bigram_freq = dict()
 for key, value in bigram_counter.items():
     bigram_freq[key] = value
 
+print('smoothing')
 for i in range(vocab_size):
     for j in range(vocab_size):
         if (i, j) not in bigram_freq:
             bigram_freq[(i, j)] = 1
 
+print('freq -> prob')
 for i in range(vocab_size):
     total = 0
     for j in range(vocab_size):

@@ -38,6 +38,7 @@ for i in tqdm(range(vocab_size)):
     for j in range(vocab_size):
         if (i, j) in temp_dict:
             freq_list.append(temp_dict[(i, j)])
+            print((i, j), temp_dict[(i, j)])
         else:
             freq_list.append(1)
 

@@ -11,7 +11,7 @@ from .utils import get_attn_key_pad_mask, get_attn_pad_mask, get_non_pad_mask, g
 
 filename = 'bigram_freq.pkl'
 print('loading {}...'.format(filename))
-with open(filename, 'wb') as file:
+with open(filename, 'rb') as file:
     bigram_freq = pickle.load(file)
 
 

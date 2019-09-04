@@ -44,7 +44,7 @@ for i in tqdm(range(vocab_size)):
     for j in range(vocab_size):
         bigram_freq[(i, j)] = bigram_freq[(i, j)] / total
 
-print(bigram_freq.items()[:100])
-
 with open('bigram_freq.pkl', 'wb') as file:
     pickle.dump(bigram_freq, file)
+
+print(bigram_freq.items()[:100])

@@ -160,7 +160,7 @@ class Decoder(nn.Module):
             for hyp in hyps:
                 ys = hyp['yseq']  # 1 x i
                 print('ys: ' + str(ys))
-                last_id = ys[0][-1]
+                last_id = ys.cpu().numpy()[0][-1]
                 print('last_id: ' + str(last_id))
                 print(bigram_freq[last_id])
                 print('bigram_freq[last_id]: ' + str(bigram_freq[last_id]))

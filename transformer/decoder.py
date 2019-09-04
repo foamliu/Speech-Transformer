@@ -171,9 +171,7 @@ class Decoder(nn.Module):
 
                 seq_logit = self.tgt_word_prj(dec_output[:, -1])
                 # local_scores = F.log_softmax(seq_logit, dim=1)
-                local_scores = F.softmax(seq_logit, dim=1)
-                print(local_scores)
-                print('local_scores.size(): ' + str(local_scores.size()))
+                local_scores = F.log_softmax(seq_logit, dim=1)
 
                 # topk scores
                 local_best_scores, local_best_ids = torch.topk(

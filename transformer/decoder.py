@@ -162,7 +162,7 @@ class Decoder(nn.Module):
                 last_id = ys.cpu().numpy()[0][-1]
                 freq = bigram_freq[last_id]
                 freq = torch.log(torch.from_numpy(freq))
-                print('freq: ' + str(freq))
+                # print('freq: ' + str(freq))
                 # -- Prepare masks
                 non_pad_mask = torch.ones_like(ys).float().unsqueeze(-1)  # 1xix1
                 slf_attn_mask = get_subsequent_mask(ys)
@@ -182,7 +182,8 @@ class Decoder(nn.Module):
                 seq_logit = self.tgt_word_prj(dec_output[:, -1])
                 # local_scores = F.log_softmax(seq_logit, dim=1)
                 local_scores = F.log_softmax(seq_logit, dim=1)
-                print('local_scores: ' + str(local_scores))
+                local_scores += freq
+                # print('local_scores: ' + str(local_scores))
 
                 # topk scores
                 local_best_scores, local_best_ids = torch.topk(

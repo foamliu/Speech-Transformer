@@ -43,8 +43,11 @@ for i in tqdm(range(vocab_size)):
 
     freq_list = np.array(freq_list)
     freq_list = freq_list / np.sum(freq_list)
+
     assert (len(freq_list) == vocab_size)
     bigram_freq[i] = freq_list
+    print(len(bigram_freq[i]))
+    print(i)
 
 print(len(bigram_freq[0]))
 with open('bigram_freq.pkl', 'wb') as file:

@@ -46,5 +46,6 @@ for i in tqdm(range(vocab_size)):
     assert (len(freq_list) == vocab_size)
     bigram_freq[i] = freq_list
 
+print(len(bigram_freq[0]))
 with open('bigram_freq.pkl', 'wb') as file:
     pickle.dump(bigram_freq, file)

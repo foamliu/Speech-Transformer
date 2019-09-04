@@ -36,12 +36,12 @@ bigram_freq = dict()
 for i in tqdm(range(vocab_size)):
     freq_list = []
     for j in range(vocab_size):
-        if (i, j) not in bigram_freq:
-            freq_list.append(1)
-        else:
+        if (i, j) in bigram_freq:
             freq_list.append(bigram_freq[(i, j)])
+        else:
+            freq_list.append(1)
     assert (len(freq_list) == vocab_size)
-    freq_list = np.array(freq_list, dtype=np.float)
+    freq_list = np.array(freq_list)
     freq_list = freq_list / np.sum(freq_list)
     bigram_freq[i] = freq_list
 

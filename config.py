@@ -28,7 +28,7 @@ eos_id = 1
 num_train = 120098
 num_dev = 14326
 num_test = 7176
-vocab_size = 4336
+vocab_size = 4335
 
 DATA_DIR = 'data'
 aishell_folder = 'data/data_aishell'

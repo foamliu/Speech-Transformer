@@ -27,7 +27,7 @@ for out in OUT_LIST:
     prob = 1.0
     for i in range(1, len(out)):
         prob *= bigram_freq[(out[i - 1], out[i])]
-
+    prob_list.append(prob)
 prob_list = np.array(prob_list)
 prob_list = prob_list / np.sum(prob_list)
 print(prob_list)

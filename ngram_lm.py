@@ -36,7 +36,7 @@ bigram_freq = dict()
 for i in tqdm(range(vocab_size)):
     freq_list = []
     for j in range(vocab_size):
-        if (i, j) in bigram_freq:
+        if (i, j) in temp_dict:
             freq_list.append(temp_dict[(i, j)])
         else:
             freq_list.append(1)

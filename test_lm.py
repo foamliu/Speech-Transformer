@@ -4,11 +4,13 @@ import numpy as np
 
 from config import pickle_file, sos_id, eos_id
 
+print('loading {}...'.format(pickle_file))
 with open(pickle_file, 'rb') as file:
     data = pickle.load(file)
 VOCAB = data['VOCAB']
 IVOCAB = data['IVOCAB']
 
+print('loading bigram_freq.pkl...')
 with open('bigram_freq.pkl', 'rb') as file:
     bigram_freq = pickle.load(file)
 

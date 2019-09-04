@@ -25,7 +25,7 @@ for out in OUT_LIST:
     out = [sos_id] + [VOCAB[ch] for ch in out] + [eos_id]
     prob = 1.0
     for i in range(1, len(out)):
-        prob *= bigram_freq((out[i - 1], out[i]))
+        prob *= bigram_freq[(out[i - 1], out[i])]
 
 prob_list = np.array(prob_list)
 prob_list = prob_list / np.sum(prob_list)

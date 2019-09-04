@@ -170,6 +170,8 @@ class Decoder(nn.Module):
                         dec_enc_attn_mask=None)
 
                 seq_logit = self.tgt_word_prj(dec_output[:, -1])
+                print(seq_logit)
+                print('seq_logit.size(): ' + str(seq_logit.size()))
 
                 local_scores = F.log_softmax(seq_logit, dim=1)
                 # topk scores

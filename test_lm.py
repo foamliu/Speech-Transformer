@@ -18,6 +18,7 @@ OUT_LIST = ['<sos>比赛很快便城像一边到的局面第二规合<eos>', '<s
             '<sos>比赛很快便呈向一边到的局面第二规合<eos>', '<sos>比赛很快便城像一边到的局面第二回合<eos>']
 GT = '比赛很快便呈向一边倒的局面第二回合<eos>'
 
+print('calculating prob...')
 prob_list = []
 for out in OUT_LIST:
     print(out)

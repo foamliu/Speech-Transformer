@@ -162,9 +162,9 @@ class Decoder(nn.Module):
                 last_id = ys.cpu().numpy()[0][-1]
                 freq = bigram_freq[last_id]
                 freq = torch.log(torch.from_numpy(freq))
-                print(freq.dtype)
+                # print(freq.dtype)
                 freq = freq.type(torch.float).to(device)
-                print(freq.dtype)
+                # print(freq.dtype)
                 # print('freq.size(): ' + str(freq.size()))
                 # print('freq: ' + str(freq))
                 # -- Prepare masks

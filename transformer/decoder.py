@@ -4,7 +4,7 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 
-from config import IGNORE_ID
+from config import IGNORE_ID, device
 from .attention import MultiHeadAttention
 from .module import PositionalEncoding, PositionwiseFeedForward
 from .utils import get_attn_key_pad_mask, get_attn_pad_mask, get_non_pad_mask, get_subsequent_mask, pad_list
@@ -163,7 +163,7 @@ class Decoder(nn.Module):
                 freq = bigram_freq[last_id]
                 freq = torch.log(torch.from_numpy(freq))
                 print(freq.dtype)
-                freq.type(torch.float)
+                freq = freq.type(torch.float).to(device)
                 print(freq.dtype)
                 # print('freq.size(): ' + str(freq.size()))
                 # print('freq: ' + str(freq))

@@ -186,7 +186,7 @@ class Decoder(nn.Module):
                 seq_logit = self.tgt_word_prj(dec_output[:, -1])
                 # local_scores = F.log_softmax(seq_logit, dim=1)
                 local_scores = F.log_softmax(seq_logit, dim=1)
-                print('local_scores.size(): ' + str(local_scores.size()))
+                # print('local_scores.size(): ' + str(local_scores.size()))
                 local_scores += freq
                 # print('local_scores: ' + str(local_scores))
 

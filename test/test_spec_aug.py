@@ -22,7 +22,7 @@ import librosa
 import numpy as np
 import torch
 
-from specAugment import spec_augment_pytorch
+from ..specAugment import spec_augment_pytorch
 
 sys.path.append(os.path.dirname(os.path.abspath(os.path.dirname(__file__))))
 

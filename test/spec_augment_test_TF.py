@@ -18,7 +18,7 @@ import argparse
 
 import librosa
 import numpy as np
-from specAugment import spec_augment_tensorflow
+from ..specAugment import spec_augment_tensorflow
 
 # sys.path.append(os.path.dirname(os.path.abspath(os.path.dirname(__file__))))
 

@@ -1,6 +1,7 @@
 import pickle
 
 import numpy as np
+from specAugment import spec_augment_tensorflow
 from torch.utils.data import Dataset
 from torch.utils.data.dataloader import default_collate
 
@@ -75,10 +76,11 @@ class AiShellDataset(Dataset):
         wave = sample['wave']
         trn = sample['trn']
 
-        feature = extract_feature(input_file=wave, feature='fbank', dim=self.args.d_input, cmvn=True)
-        feature = build_LFR_features(feature, m=self.args.LFR_m, n=self.args.LFR_n)
+        mel_spectrogram = extract_feature(input_file=wave, feature='fbank', dim=self.args.d_input, cmvn=True)
+        mel_spectrogram = spec_augment_tensorflow.spec_augment(mel_spectrogram=mel_spectrogram)
+        mel_spectrogram = build_LFR_features(mel_spectrogram, m=self.args.LFR_m, n=self.args.LFR_n)
 
-        return feature, trn
+        return mel_spectrogram, trn
 
     def __len__(self):
         return len(self.samples)

@@ -55,8 +55,11 @@ if __name__ == "__main__":
 
     # reshape spectrogram shape to [batch_size, time, frequency]
     shape = mel_spectrogram.shape
+    print('shape: ' + str(shape))
     mel_spectrogram = np.reshape(mel_spectrogram, (-1, shape[0], shape[1]))
+    print('mel_spectrogram.shape: ' + str(mel_spectrogram.shape))
     mel_spectrogram = torch.from_numpy(mel_spectrogram)
+    print('mel_spectrogram.size(): ' + str(mel_spectrogram.size()))
 
     # Show Raw mel-spectrogram
     spec_augment_pytorch.visualization_spectrogram(mel_spectrogram=mel_spectrogram,
@@ -64,6 +67,7 @@ if __name__ == "__main__":
 
     # Calculate SpecAugment pytorch
     warped_masked_spectrogram = spec_augment_pytorch.spec_augment(mel_spectrogram=mel_spectrogram)
+    print('warped_masked_spectrogram.size(): ' + str(warped_masked_spectrogram.size()))
 
     # Show time warped & masked spectrogram
     spec_augment_pytorch.visualization_spectrogram(mel_spectrogram=warped_masked_spectrogram,

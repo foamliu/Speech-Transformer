@@ -1,5 +1,3 @@
-import pickle
-
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
@@ -9,10 +7,11 @@ from .attention import MultiHeadAttention
 from .module import PositionalEncoding, PositionwiseFeedForward
 from .utils import get_attn_key_pad_mask, get_attn_pad_mask, get_non_pad_mask, get_subsequent_mask, pad_list
 
-filename = 'bigram_freq.pkl'
-print('loading {}...'.format(filename))
-with open(filename, 'rb') as file:
-    bigram_freq = pickle.load(file)
+
+# filename = 'bigram_freq.pkl'
+# print('loading {}...'.format(filename))
+# with open(filename, 'rb') as file:
+#     bigram_freq = pickle.load(file)
 
 
 class Decoder(nn.Module):
@@ -159,10 +158,13 @@ class Decoder(nn.Module):
             hyps_best_kept = []
             for hyp in hyps:
                 ys = hyp['yseq']  # 1 x i
-                last_id = ys.cpu().numpy()[0][-1]
-                freq = bigram_freq[last_id]
-                freq = torch.log(torch.from_numpy(freq))
-                print('freq.size(): ' + str(freq.size()))
+                # last_id = ys.cpu().numpy()[0][-1]
+                # freq = bigram_freq[last_id]
+                # freq = torch.log(torch.from_numpy(freq))
+                # # print(freq.dtype)
+                # freq = freq.type(torch.float).to(device)
+                # print(freq.dtype)
+                # print('freq.size(): ' + str(freq.size()))
                 # print('freq: ' + str(freq))
                 # -- Prepare masks
                 non_pad_mask = torch.ones_like(ys).float().unsqueeze(-1)  # 1xix1
@@ -183,8 +185,8 @@ class Decoder(nn.Module):
                 seq_logit = self.tgt_word_prj(dec_output[:, -1])
                 # local_scores = F.log_softmax(seq_logit, dim=1)
                 local_scores = F.log_softmax(seq_logit, dim=1)
-                print('local_scores.size(): ' + str(local_scores.size()))
-                local_scores += freq
+                # print('local_scores.size(): ' + str(local_scores.size()))
+                # local_scores += freq
                 # print('local_scores: ' + str(local_scores))
 
                 # topk scores

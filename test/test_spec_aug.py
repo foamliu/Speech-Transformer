@@ -26,7 +26,7 @@ from SpecAugment import spec_augment_pytorch
 sys.path.append(os.path.dirname(os.path.abspath(os.path.dirname(__file__))))
 
 parser = argparse.ArgumentParser(description='Spec Augment')
-parser.add_argument('--audio-path', default='audio/audio_0.wav',
+parser.add_argument('--audio-path', default='../audio/audio_0.wav',
                     help='The audio file.')
 parser.add_argument('--time-warp-para', default=80,
                     help='time warp parameter W')

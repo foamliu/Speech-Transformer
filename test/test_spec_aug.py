@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 # ==============================================================================
-"""SpecAugment test"""
+"""specAugment test"""
 
 import argparse
 import os
@@ -26,7 +26,7 @@ from specAugment import spec_augment_pytorch
 sys.path.append(os.path.dirname(os.path.abspath(os.path.dirname(__file__))))
 
 parser = argparse.ArgumentParser(description='Spec Augment')
-parser.add_argument('--audio-path', default='../audio/audio_0.wav',
+parser.add_argument('--audio-path', default='../audios/audio_0.wav',
                     help='The audio file.')
 parser.add_argument('--time-warp-para', default=80,
                     help='time warp parameter W')
@@ -65,7 +65,7 @@ if __name__ == "__main__":
     spec_augment_pytorch.visualization_spectrogram(mel_spectrogram=mel_spectrogram,
                                                    title="Raw Mel Spectrogram")
 
-    # Calculate SpecAugment pytorch
+    # Calculate specAugment pytorch
     warped_masked_spectrogram = spec_augment_pytorch.spec_augment(mel_spectrogram=mel_spectrogram)
     print('warped_masked_spectrogram.size(): ' + str(warped_masked_spectrogram.size()))
 

@@ -12,22 +12,18 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 # ==============================================================================
-"""specAugment test"""
+"""SpecAugment test"""
 
 import argparse
-import os
-import sys
-
 import librosa
 import numpy as np
 import torch
-
 from specAugment import spec_augment_pytorch
-
+import os, sys
 sys.path.append(os.path.dirname(os.path.abspath(os.path.dirname(__file__))))
 
 parser = argparse.ArgumentParser(description='Spec Augment')
-parser.add_argument('--audio-path', default='../audios/audio_0.wav',
+parser.add_argument('--audio-path', default='../audios/audio_1.wav',
                     help='The audio file.')
 parser.add_argument('--time-warp-para', default=80,
                     help='time warp parameter W')
@@ -46,6 +42,7 @@ frequency_masking_para = args.time_mask_para
 masking_line_number = args.masking_line_number
 
 if __name__ == "__main__":
+
     # Step 0 : load audio file, extract mel spectrogram
     audio, sampling_rate = librosa.load(audio_path)
     mel_spectrogram = librosa.feature.melspectrogram(y=audio,
@@ -56,20 +53,16 @@ if __name__ == "__main__":
 
     # reshape spectrogram shape to [batch_size, time, frequency]
     shape = mel_spectrogram.shape
-    print('shape: ' + str(shape))
     mel_spectrogram = np.reshape(mel_spectrogram, (-1, shape[0], shape[1]))
-    print('mel_spectrogram.shape: ' + str(mel_spectrogram.shape))
     mel_spectrogram = torch.from_numpy(mel_spectrogram)
-    print('mel_spectrogram.size(): ' + str(mel_spectrogram.size()))
 
     # Show Raw mel-spectrogram
     spec_augment_pytorch.visualization_spectrogram(mel_spectrogram=mel_spectrogram,
-                                                   title="Raw Mel Spectrogram")
+                                                      title="Raw Mel Spectrogram")
 
-    # Calculate specAugment pytorch
+    # Calculate SpecAugment pytorch
     warped_masked_spectrogram = spec_augment_pytorch.spec_augment(mel_spectrogram=mel_spectrogram)
-    print('warped_masked_spectrogram.size(): ' + str(warped_masked_spectrogram.size()))
 
     # Show time warped & masked spectrogram
     spec_augment_pytorch.visualization_spectrogram(mel_spectrogram=warped_masked_spectrogram,
-                                                   title="pytorch Warped & Masked Mel Spectrogram")
+                                                      title="pytorch Warped & Masked Mel Spectrogram")

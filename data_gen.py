@@ -77,9 +77,6 @@ class AiShellDataset(Dataset):
         trn = sample['trn']
 
         mel_spectrogram = extract_feature(input_file=wave, feature='fbank', dim=self.args.d_input, cmvn=True)
-        print(mel_spectrogram.shape)
-        mel_spectrogram = spec_augment_tensorflow.spec_augment(mel_spectrogram=mel_spectrogram)
-        print(mel_spectrogram.shape)
         mel_spectrogram = build_LFR_features(mel_spectrogram, m=self.args.LFR_m, n=self.args.LFR_n)
 
         return mel_spectrogram, trn

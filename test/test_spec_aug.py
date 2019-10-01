@@ -21,6 +21,7 @@ import sys
 import librosa
 import numpy as np
 import torch
+
 from specAugment import spec_augment_pytorch
 
 sys.path.append(os.path.dirname(os.path.abspath(os.path.dirname(__file__))))
@@ -51,7 +52,7 @@ if __name__ == "__main__":
                                                      sr=sampling_rate,
                                                      n_mels=256,
                                                      hop_length=128,
-                                                      fmax=8000)
+                                                     fmax=8000)
 
     # reshape spectrogram shape to [batch_size, time, frequency]
     shape = mel_spectrogram.shape

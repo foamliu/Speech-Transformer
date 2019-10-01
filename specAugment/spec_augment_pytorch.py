@@ -43,7 +43,7 @@ import numpy as np
 
 matplotlib.use('TkAgg')
 import matplotlib.pyplot as plt
-from specAugment.sparse_image_warp_pytorch import sparse_image_warp
+from specAugment.sparse_image_warp_np import sparse_image_warp_np
 import torch
 
 
@@ -62,7 +62,7 @@ def time_warp(spec, W=5):
     dist_to_warp = random.randrange(-W, W)
     src_pts = torch.tensor([[[y, point_to_warp]]])
     dest_pts = torch.tensor([[[y, point_to_warp + dist_to_warp]]])
-    warped_spectro, dense_flows = sparse_image_warp(spec, src_pts, dest_pts)
+    warped_spectro, dense_flows = sparse_image_warp_np(spec, src_pts, dest_pts)
     return warped_spectro.squeeze(3)
 
 

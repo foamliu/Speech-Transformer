@@ -77,6 +77,8 @@ class AiShellDataset(Dataset):
 
         feature = extract_feature(input_file=wave, feature='fbank', dim=self.args.d_input, cmvn=True)
         feature = build_LFR_features(feature, m=self.args.LFR_m, n=self.args.LFR_n)
+        # zero mean and unit variance
+        feature = (feature - feature.mean()) / feature.std()
 
         return feature, trn
 

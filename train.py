@@ -1,6 +1,6 @@
 import numpy as np
 import torch
-from tensorboardX import SummaryWriter
+from torch.utils.tensorboard import SummaryWriter
 # from torch import nn
 from tqdm import tqdm
 
@@ -49,7 +49,6 @@ def train_net(args):
         epochs_since_improvement = checkpoint['epochs_since_improvement']
         model = checkpoint['model']
         optimizer = checkpoint['optimizer']
-        optimizer.update_lr(args.lr)
 
     logger = get_logger()
 

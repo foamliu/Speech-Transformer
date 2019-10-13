@@ -1,7 +1,7 @@
 import pickle
+import random
 
 import numpy as np
-
 from torch.utils.data import Dataset
 from torch.utils.data.dataloader import default_collate
 
@@ -62,6 +62,32 @@ def build_LFR_features(inputs, m, n):
     return np.vstack(LFR_inputs)
 
 
+# Source: https://www.kaggle.com/davids1992/specaugment-quick-implementation
+def spec_augment(spec: np.ndarray,
+                 num_mask=2,
+                 freq_masking=0.15,
+                 time_masking=0.20,
+                 value=0):
+    spec = spec.copy()
+    num_mask = random.randint(1, num_mask)
+    for i in range(num_mask):
+        all_freqs_num, all_frames_num = spec.shape
+        freq_percentage = random.uniform(0.0, freq_masking)
+
+        num_freqs_to_mask = int(freq_percentage * all_freqs_num)
+        f0 = np.random.uniform(low=0.0, high=all_freqs_num - num_freqs_to_mask)
+        f0 = int(f0)
+        spec[f0:f0 + num_freqs_to_mask, :] = value
+
+        time_percentage = random.uniform(0.0, time_masking)
+
+        num_frames_to_mask = int(time_percentage * all_frames_num)
+        t0 = np.random.uniform(low=0.0, high=all_frames_num - num_frames_to_mask)
+        t0 = int(t0)
+        spec[:, t0:t0 + num_frames_to_mask] = value
+    return spec
+
+
 class AiShellDataset(Dataset):
     def __init__(self, args, split):
         self.args = args
@@ -76,10 +102,13 @@ class AiShellDataset(Dataset):
         wave = sample['wave']
         trn = sample['trn']
 
-        mel_spectrogram = extract_feature(input_file=wave, feature='fbank', dim=self.args.d_input, cmvn=True)
-        mel_spectrogram = build_LFR_features(mel_spectrogram, m=self.args.LFR_m, n=self.args.LFR_n)
+        feature = extract_feature(input_file=wave, feature='fbank', dim=self.args.d_input, cmvn=True)
+        feature = build_LFR_features(feature, m=self.args.LFR_m, n=self.args.LFR_n)
+        # zero mean and unit variance
+        feature = (feature - feature.mean()) / feature.std()
+        feature = spec_augment(feature)
 
-        return mel_spectrogram, trn
+        return feature, trn
 
     def __len__(self):
         return len(self.samples)

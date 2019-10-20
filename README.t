@@ -35,7 +35,7 @@ $ python test.py
 
 |Model|CER|Download|
 |---|---|---|
-|Speech Transformer|12.1|[Link](https://github.com/foamliu/Speech-Transformer/releases/download/v1.0/BEST_checkpoint.tar)|
+|Speech Transformer|11.5|[Link](https://github.com/foamliu/Speech-Transformer/releases/download/v1.0/BEST_checkpoint.tar)|
 
 ## Dependency
 

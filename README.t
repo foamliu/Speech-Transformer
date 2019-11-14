@@ -85,7 +85,7 @@ $ tensorboard --logdir runs
 ```
 
 ### Demo
-Please download the [pretrained model](https://github.com/foamliu/Speech-Transformer/releases/download/v1.0/speech-transformer-cn.pt) and [char list](https://github.com/foamliu/Speech-Transformer/releases/download/v1.0/char_list.pkl) then run:
+Please download the [pretrained model](https://github.com/foamliu/Speech-Transformer/releases/download/v1.0/speech-transformer-cn.pt) then run:
 ```bash
 $ python demo.py
 ```

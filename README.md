@@ -85,7 +85,7 @@ $ tensorboard --logdir runs
 ```
 
 ### Demo
-Please download the [pretrained model](https://github.com/foamliu/Speech-Transformer/releases/download/v1.0/speech-transformer-cn.pt) and [char list](https://github.com/foamliu/Speech-Transformer/releases/download/v1.0/char_list.pkl) then run:
+Please download the [pretrained model](https://github.com/foamliu/Speech-Transformer/releases/download/v1.0/speech-transformer-cn.pt) then run:
 ```bash
 $ python demo.py
 ```
@@ -94,13 +94,13 @@ It picks 10 random test examples and recognize them like these:
 
 |Audio|Out|GT|
 |---|---|---|
-|[audio_0.wav](https://github.com/foamliu/Speech-Transformer/raw/master/audios/audio_0.wav)|这个的斗和考验有有就就发在我们身边变<br>这个的斗和考验有有时就发在我们身边变<br>这样的斗和考验有有就就发在我们身边变<br>这样的斗和考验有有时就发在我们身边变<br>这个的斗和考验有有就就发在我们身边|这样的斗争和考验有时就发生在我们身边|
-|[audio_1.wav](https://github.com/foamliu/Speech-Transformer/raw/master/audios/audio_1.wav)|加快实施保护性更多通程<br>加快实施保护性更多工程<br>加快实施保护性更多同程<br>加快实施保护性更多空程<br>加快实施保护性更多控程|加快实施保护性耕作工程|
-|[audio_2.wav](https://github.com/foamliu/Speech-Transformer/raw/master/audios/audio_2.wav)|但是由于该项业务占比较小<br>但是由于单项业务占比较小<br>但是由于该项业务占比焦小<br>但是由于该项业务占比交小<br>但是由于该项业务站比较小|但是由于该项业务占比较小|
-|[audio_3.wav](https://github.com/foamliu/Speech-Transformer/raw/master/audios/audio_3.wav)|以陈马镇就是玩笑任何情况都力挺范冰冰<br>以陈马镇就是玩笑任何情况都立挺范冰冰<br>以陈马镇就是玩笑任何情况都力挺范冰丁<br>以陈马镇就是玩笑任何情况都力挺饭冰冰<br>李陈马镇就是玩笑任何情况都力挺范冰冰|李晨马震就是玩笑任何情况都力挺范冰冰|
-|[audio_4.wav](https://github.com/foamliu/Speech-Transformer/raw/master/audios/audio_4.wav)|经过将近一年时间的卖场谈判<br>经过将近一年时间的卖长谈判<br>经过将近一年时间的漫场谈判<br>经过将近一年时间的迈场谈判<br>经过将近一年时间的漫长谈判|经过将近一年时间的漫长谈判|
-|[audio_5.wav](https://github.com/foamliu/Speech-Transformer/raw/master/audios/audio_5.wav)|中国和多米尼家同期九分排在第四和平无<br>中国和多米尼家同期九分排在第四和零无<br>中国和多米尼家同期九分排在第四和评无<br>中国和多米尼加同期九分排在第四和平无<br>中国和多米尼家同期九分排在第四和林无|中国和多米尼加同积九分排在第四和第五位|
-|[audio_6.wav](https://github.com/foamliu/Speech-Transformer/raw/master/audios/audio_6.wav)|温州一网友造谣苏迪罗登陆期间水库公他悲拘<br>温州一网友造谣苏迪罗登陆期间水库公踏悲拘<br>温州一网友造谣苏迪罗登陆期间水库公她悲拘<br>温州一网友造谣苏迪罗登陆期间水库公他被拘<br>温州一网友造谣苏迪罗登陆期间水库公踏被拘|温州一网友造谣苏迪罗登陆期间水库崩塌被拘|
-|[audio_7.wav](https://github.com/foamliu/Speech-Transformer/raw/master/audios/audio_7.wav)|他看了不少恐部片<br>她看了不少恐部片<br>他看了不少恐不片<br>他看了不少恐补片<br>他看了不少恐步片|她看了不少恐怖片|
-|[audio_8.wav](https://github.com/foamliu/Speech-Transformer/raw/master/audios/audio_8.wav)|对于这条特殊的岁道<br>对于这条特殊的碎道<br>对于这条特殊的最道<br>对于这条特殊的随道<br>对于这条特殊的水道|对于这条特殊的隧道|
-|[audio_9.wav](https://github.com/foamliu/Speech-Transformer/raw/master/audios/audio_9.wav)|报七千亿美元<br>报期千亿美元<br>到七千亿美元<br>爆七千亿美元<br>暴七千亿美元|报七千亿美元|
+|[audio_0.wav](https://github.com/foamliu/Speech-Transformer/raw/master/audios/audio_0.wav)|我国的经济处在爬破过凯的重要公考<br>我国的经济处在爬破过凯的重要公口<br>我国的经济处在盘破过凯的重要公考<br>我国的经济处在爬破过凯的重要公靠<br>我国的经济处在爬坡过凯的重要公考|我国的经济处在爬坡过坎的重要关口|
+|[audio_1.wav](https://github.com/foamliu/Speech-Transformer/raw/master/audios/audio_1.wav)|完善主地承包经一全流市市场<br>完善主地承包经一全六市市场<br>完善主地承包经营全流市市场<br>完善主地承包经一权流市市场<br>完善主地承包经营全六市市场|完善土地承包经营权流转市场|
+|[audio_2.wav](https://github.com/foamliu/Speech-Transformer/raw/master/audios/audio_2.wav)|临长各类设施使用年限<br>严长各类设施使用年限<br>延长各类设施使用年限<br>很长各类设施使用年限<br>难长各类设施使用年限|延长各类设施使用年限|
+|[audio_3.wav](https://github.com/foamliu/Speech-Transformer/raw/master/audios/audio_3.wav)|苹果此举是为了节约用电量<br>苹果此举是是了节约用电量<br>苹果此举是为了解约用电量<br>苹果此举是为了节约用电令<br>苹果此举只为了节约用电量|苹果此举是为了节约用电量|
+|[audio_4.wav](https://github.com/foamliu/Speech-Transformer/raw/master/audios/audio_4.wav)|反他们也可以有机会参与体育运动<br>让他们也可以有机会参与体育运动<br>反她们也可以有机会参与体育运动<br>范他们也可以有机会参与体育运动<br>但他们也可以有机会参与体育运动|让他们也可以有机会参与体育运动|
+|[audio_5.wav](https://github.com/foamliu/Speech-Transformer/raw/master/audios/audio_5.wav)|陈言希穿着粉色上衣<br>陈闫希穿着粉色上衣<br>陈延希穿着粉色上衣<br>陈言琪穿着粉色上衣<br>陈演希穿着粉色上衣|陈妍希穿着粉色上衣|
+|[audio_6.wav](https://github.com/foamliu/Speech-Transformer/raw/master/audios/audio_6.wav)|说起自己的伴女大下<br>说起自己的伴理大下<br>说起自己的半女大下<br>说起自己的办女大下<br>说起自己的半理大下|说起自己的伴侣大侠|
+|[audio_7.wav](https://github.com/foamliu/Speech-Transformer/raw/master/audios/audio_7.wav)|每日经济新闻记者注意到<br>每日经济新闻记者朱意到<br>每日经济新闻记者注一到<br>每日经济新闻记者注注到<br>每日经济新闻记者注以到|每日经济新闻记者注意到|
+|[audio_8.wav](https://github.com/foamliu/Speech-Transformer/raw/master/audios/audio_8.wav)|这是今年五月份以来库存环比增幅幅小了一次<br>这是今年五月份以来库存环比增幅最小了一次<br>这是今年五月份以来库存环比增幅幅小的一次<br>这是今年五月份以来库存环比增幅最小的一次<br>这是今年五月份以来库存环比增幅幅小小一次|这是今年五月份以来库存环比增幅最小的一次|
+|[audio_9.wav](https://github.com/foamliu/Speech-Transformer/raw/master/audios/audio_9.wav)|一个人的精使生命就将走向摔老<br>一个连的精使生命就将走向摔老<br>一个人的金使生命就将走向摔老<br>一个人的坚使生命就将走向摔老<br>一个连的金使生命就将走向摔老|一个人的精神生命就将走向衰老|

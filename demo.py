@@ -29,18 +29,11 @@ def parse_args():
 
 if __name__ == '__main__':
     args = parse_args()
+    with open('char_list.pkl', 'rb') as file:
+        char_list = pickle.load(file)
     with open(pickle_file, 'rb') as file:
         data = pickle.load(file)
-    char_list = data['IVOCAB']
     samples = data['test']
-
-    with open('char_list.pkl', 'wb') as file:
-        pickle.dump(char_list, file)
-
-    # checkpoint = 'BEST_checkpoint.tar'
-    # checkpoint = torch.load(checkpoint)
-    # model = checkpoint['model']
-    # model.eval()
 
     filename = 'speech-transformer-cn.pt'
     print('loading model: {}...'.format(filename))

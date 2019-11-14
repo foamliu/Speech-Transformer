@@ -41,7 +41,7 @@ if __name__ == '__main__':
     filename = 'speech-transformer-cn.pt'
     print('loading model: {}...'.format(filename))
     model = Transformer()
-    model.load_state_dict(torch.load(checkpoint))
+    model.load_state_dict(torch.load(filename))
     model = model.to(device)
     model.eval()
 

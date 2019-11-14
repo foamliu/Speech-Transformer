@@ -4,9 +4,10 @@ import random
 from shutil import copyfile
 
 import torch
-from transformer.transformer import Transformer
+
 from config import pickle_file, device, input_dim, LFR_m, LFR_n
 from data_gen import build_LFR_features
+from transformer.transformer import Transformer
 from utils import extract_feature, ensure_folder
 
 
@@ -32,6 +33,9 @@ if __name__ == '__main__':
         data = pickle.load(file)
     char_list = data['IVOCAB']
     samples = data['test']
+
+    with open('char_list.pkl', 'wb') as file:
+        pickle.dump(char_list, file)
 
     # checkpoint = 'BEST_checkpoint.tar'
     # checkpoint = torch.load(checkpoint)

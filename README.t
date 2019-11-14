@@ -85,10 +85,13 @@ $ tensorboard --logdir runs
 ```
 
 ### Demo
-Pick 10 random test examples from test set:
+Please download the [pretrained model](https://github.com/foamliu/Speech-Transformer/releases/download/v1.0/speech-transformer-cn.pt) and [char list](https://github.com/foamliu/Speech-Transformer/releases/download/v1.0/char_list.pkl) then run:
 ```bash
 $ python demo.py
 ```
+
+It picks 10 random test examples and recognize them like these:
+
 |Audio|Out|GT|
 |---|---|---|
 |[audio_0.wav](https://github.com/foamliu/Speech-Transformer/raw/master/audios/audio_0.wav)|$(out_list_0)|$(gt_0)|

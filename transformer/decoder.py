@@ -18,10 +18,10 @@ class Decoder(nn.Module):
     ''' A decoder model with self attention mechanism. '''
 
     def __init__(
-            self, sos_id, eos_id,
-            n_tgt_vocab, d_word_vec,
-            n_layers, n_head, d_k, d_v,
-            d_model, d_inner, dropout=0.1,
+            self, sos_id=0, eos_id=1,
+            n_tgt_vocab=4335, d_word_vec=512,
+            n_layers=6, n_head=8, d_k=64, d_v=64,
+            d_model=512, d_inner=2048, dropout=0.1,
             tgt_emb_prj_weight_sharing=True,
             pe_maxlen=5000):
         super(Decoder, self).__init__()

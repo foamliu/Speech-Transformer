@@ -4,11 +4,10 @@ import random
 from shutil import copyfile
 
 import torch
-
+from transformer.transformer import Transformer
 from config import pickle_file, device, input_dim, LFR_m, LFR_n
 from data_gen import build_LFR_features
 from utils import extract_feature, ensure_folder
-from xer import cer_function
 
 
 def parse_args():
@@ -34,9 +33,16 @@ if __name__ == '__main__':
     char_list = data['IVOCAB']
     samples = data['test']
 
-    checkpoint = 'BEST_checkpoint.tar'
-    checkpoint = torch.load(checkpoint)
-    model = checkpoint['model']
+    # checkpoint = 'BEST_checkpoint.tar'
+    # checkpoint = torch.load(checkpoint)
+    # model = checkpoint['model']
+    # model.eval()
+
+    filename = 'speech-transformer-cn.pt'
+    print('loading model: {}...'.format(filename))
+    model = Transformer()
+    model.load_state_dict(torch.load(checkpoint))
+    model = model.to(device)
     model.eval()
 
     samples = random.sample(samples, 10)

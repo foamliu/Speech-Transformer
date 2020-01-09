@@ -104,3 +104,12 @@ It picks 10 random test examples and recognize them like these:
 |[audio_7.wav](https://github.com/foamliu/Speech-Transformer/raw/master/audios/audio_7.wav)|$(out_list_7)|$(gt_7)|
 |[audio_8.wav](https://github.com/foamliu/Speech-Transformer/raw/master/audios/audio_8.wav)|$(out_list_8)|$(gt_8)|
 |[audio_9.wav](https://github.com/foamliu/Speech-Transformer/raw/master/audios/audio_9.wav)|$(out_list_9)|$(gt_9)|
+
+## 小小的赞助~
+<p align="center">
+	<img src="https://github.com/foamliu/Speech-Transformer/blob/master/sponsor.jpg" alt="Sample"  width="324" height="504">
+	<p align="center">
+		<em>若对您有帮助可给予小小的赞助~</em>
+	</p>
+</p>
+<br/><br/><br/>

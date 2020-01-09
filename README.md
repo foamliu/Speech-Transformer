@@ -104,3 +104,12 @@ It picks 10 random test examples and recognize them like these:
 |[audio_7.wav](https://github.com/foamliu/Speech-Transformer/raw/master/audios/audio_7.wav)|每日经济新闻记者注意到<br>每日经济新闻记者朱意到<br>每日经济新闻记者注一到<br>每日经济新闻记者注注到<br>每日经济新闻记者注以到|每日经济新闻记者注意到|
 |[audio_8.wav](https://github.com/foamliu/Speech-Transformer/raw/master/audios/audio_8.wav)|这是今年五月份以来库存环比增幅幅小了一次<br>这是今年五月份以来库存环比增幅最小了一次<br>这是今年五月份以来库存环比增幅幅小的一次<br>这是今年五月份以来库存环比增幅最小的一次<br>这是今年五月份以来库存环比增幅幅小小一次|这是今年五月份以来库存环比增幅最小的一次|
 |[audio_9.wav](https://github.com/foamliu/Speech-Transformer/raw/master/audios/audio_9.wav)|一个人的精使生命就将走向摔老<br>一个连的精使生命就将走向摔老<br>一个人的金使生命就将走向摔老<br>一个人的坚使生命就将走向摔老<br>一个连的金使生命就将走向摔老|一个人的精神生命就将走向衰老|
+
+## 小小的赞助~
+<p align="center">
+	<img src="https://github.com/foamliu/Speech-Transformer/blob/master/sponsor.jpg" alt="Sample"  width="324" height="504">
+	<p align="center">
+		<em>若对您有帮助可给予小小的赞助~</em>
+	</p>
+</p>
+<br/><br/><br/>

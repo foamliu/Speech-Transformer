@@ -139,7 +139,11 @@ def parse_args():
                         help='warmup steps')
 
     parser.add_argument('--checkpoint', type=str, default=None, help='checkpoint')
+    
+    parser.add_argument('--n_samples', default="train:-1,dev:-1,test:-1", type=str,
+                        help='choose the number of examples to use')
     args = parser.parse_args()
+
     return args
 
 
